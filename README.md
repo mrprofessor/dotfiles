@@ -1,0 +1,2 @@
+# .vim
+Personal vim configuration
