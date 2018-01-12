@@ -53,6 +53,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,9 +74,15 @@ syntax enable
 " Personal setup
 " ******NERDTREE******
 " NerdTree auto open
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree  " F6 key has been added already
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"
+" NerdTree Toggle
+nmap <F6> :NERDTreeToggle<CR>
+"
+" NERDTree show hidden files
+let NERDTreeShowHidden=1
 "
 " ****** Vim-airline ******
 set t_Co=256
