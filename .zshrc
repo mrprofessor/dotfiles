@@ -9,7 +9,18 @@ export ZSH=/Users/mrprofessor/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # robbyrussell smt agnoster
 ZSH_THEME="agnoster"
-
+# Aliases
+gitturbot() {
+	git config --global user.email 'rudra@turbot.com' && git config --global user.name 'Rudra Narayan'
+}
+gitprof() {
+	git config --global user.email 'kar.rudra008@gmail.com' && git config --global user.name 'mrprofessor'
+}
+gituser() {
+	git config --global user.name && git config --global user.email
+}
+# alias gitturbot='git config --global user.email "rudra@turbot.com"'
+# alias gitprof='git config --global user.email "kar.rudra008@gmail.com"'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -88,10 +99,12 @@ source $ZSH/oh-my-zsh.sh
 # Hide the “user@hostname”
 prompt_context() {
 	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-       prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-    fi
+		prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+	fi
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mrprofessor/.vimpkg/bin
+
+PROMPT_HOST='%{%b%F{green}%K{yellow}%}'
