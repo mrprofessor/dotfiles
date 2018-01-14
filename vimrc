@@ -98,7 +98,8 @@ colorscheme onehalfdark
 " autocmd vimenter * NERDTree  " F6 key has been added already
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"
+"Auto refresh NerdTree on new write
+autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 "
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
