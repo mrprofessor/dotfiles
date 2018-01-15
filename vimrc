@@ -1,14 +1,21 @@
 set nocompatible              " be iMproved, required
 
 " Restrict from using arrown keys
-nnoremap <Left> :echo "Idiot !!"<CR>
-vnoremap <Left> :<C-u>echo "Idiot !!"<CR>
-inoremap <Left> <C-o>:echo "Idiot !!"<CR>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+nnoremap <Left> :echoe "Damn Idiot !!"<CR>
+vnoremap <Left> :<C-u>echoe "Damn Idiot !!"<CR>
+inoremap <Left> <C-o>:echoe "Damn Idiot !!"<CR>
+nnoremap <Down> :echoe "Damn Idiot !!"<CR>
+vnoremap <Down> :<C-u>echoe "Damn Idiot !!"<CR>
+inoremap <Down> <C-o>:echoe "Damn Idiot !!"<CR>
+nnoremap <Up> :echoe "Damn Idiot !!"<CR>
+vnoremap <Up> :<C-u>echoe "Damn Idiot !!"<CR>
+inoremap <Up> <C-o>:echoe "Damn Idiot !!"<CR>
+nnoremap <Right> :echoe "Damn Idiot !!"<CR>
+vnoremap <Right> :<C-u>echoe "Damn Idiot !!"<CR>
+inoremap <Right> <C-o>:echoe "Damn Idiot !!"<CR>
 
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 " Clear whitespaces
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -53,8 +60,12 @@ Plugin 'flazz/vim-colorschemes'
 " Plugin Name : tpope/vim-fugitive
 " Plugin repo : https://github.com/tpope/vim-fugitive
 Plugin 'tpope/vim-fugitive'
-"
+" Plugin name : sonph/onehalf
+" Plugin repo : https://github.com/sonph/onehalf
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+" Plugin name : ctrlpvim/ctrlp.vim
+" Plugin repo : https://github.com/ctrlpvim/ctrlp.vim
+Plugin 'ctrlpvim/ctrlp.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -98,8 +109,7 @@ colorscheme onehalfdark
 " autocmd vimenter * NERDTree  " F6 key has been added already
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"Auto refresh NerdTree on new write
-autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+"
 "
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
@@ -134,6 +144,12 @@ set expandtab
 set smartindent
 
 set ruler
+" Set Numbers
 set number
+set numberwidth=1
 
-
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l

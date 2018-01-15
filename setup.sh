@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Setiing up vundle : a package manager for vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim --force
 
 # Link vimrc
 ln -s -f ~/dotfiles/vimrc ~/.vim/vimrc
@@ -18,7 +18,7 @@ ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 cp ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
 
 # zsh setup
-ln -s -f ~/.zshrc
+ln -s -f ~/dotfiles/.zshrc ~/.zshrc
 
 
 
