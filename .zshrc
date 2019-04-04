@@ -2,13 +2,23 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mrprofessor/.oh-my-zsh
+export ZSH="/Users/professor/.oh-my-zsh"
+export TURBOT_ENVIRONMENT=development
+export NODE_PATH=/Users/professor/turbot/turbot-core/lib
+export TURBOT_TEST=true
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# robbyrussell smt agnoster
-ZSH_THEME="agnoster"
+ZSH_THEME="node"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
 # Aliases
 gitturbot() {
 	git config --global user.email 'rudra@turbot.com' && git config --global user.name 'Rudra Narayan'
@@ -19,8 +29,12 @@ gitprof() {
 gituser() {
 	git config --global user.name && git config --global user.email
 }
-# alias gitturbot='git config --global user.email "rudra@turbot.com"'
-# alias gitprof='git config --global user.email "kar.rudra008@gmail.com"'
+
+#vim ==> nvim
+alias oldvim="vim"
+alias vim="nvim"
+alias vi="nvim"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -53,7 +67,10 @@ gituser() {
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -63,7 +80,9 @@ gituser() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,15 +115,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Hide the “user@hostname”
-prompt_context() {
-	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-		prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-	fi
-}
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mrprofessor/.vimpkg/bin
-
-PROMPT_HOST='%{%b%F{green}%K{yellow}%}'
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
