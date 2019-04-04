@@ -1,30 +1,29 @@
 "
-"                         ███████████████████████████
-"                         ███████▀▀▀░░░░░░░▀▀▀███████
-"                         ████▀░░░░░░░░░░░░░░░░░▀████
-"                         ███│░░░░░░░░░░░░░░░░░░░│███
-"                         ██▌│░░░░░░░░░░░░░░░░░░░│▐██
-"                         ██░└┐░░░░░░░░░░░░░░░░░┌┘░██
-"                         ██░░└┐░░░░░░░░░░░░░░░┌┘░░██
-"                         ██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██
-"                         ██▌░│██████▌░░░▐██████│░▐██
-"                         ███░│▐███▀▀░░▄░░▀▀███▌│░███
-"                         ██▀─┘░░░░░░░▐█▌░░░░░░░└─▀██
-"                         ██▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄██
-"                         ████▄─┘██▌░░░░░░░▐██└─▄████
-"                         █████░░▐█─┬┬┬┬┬┬┬─█▌░░█████
-"                         ████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐████
-"                         █████▄░░░└┴┴┴┴┴┴┴┘░░░▄█████
-"                         ███████▄░░░░░░░░░░░▄███████
-"                         ██████████▄▄▄▄▄▄▄██████████
-"                         ███████████████████████████
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñÄ‚ñÄ‚ñÄ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñÄ‚ñÄ‚ñÄ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñÄ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñÄ‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚îÇ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚îÇ‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñå‚îÇ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚îÇ‚ñê‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñë‚îî‚îê‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚îå‚îò‚ñë‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñë‚ñë‚îî‚îê‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚îå‚îò‚ñë‚ñë‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñë‚ñë‚îå‚îò‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚îî‚îê‚ñë‚ñë‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñå‚ñë‚îÇ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñå‚ñë‚ñë‚ñë‚ñê‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚îÇ‚ñë‚ñê‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñë‚îÇ‚ñê‚ñà‚ñà‚ñà‚ñÄ‚ñÄ‚ñë‚ñë‚ñÑ‚ñë‚ñë‚ñÄ‚ñÄ‚ñà‚ñà‚ñà‚ñå‚îÇ‚ñë‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñÄ‚îÄ‚îò‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñê‚ñà‚ñå‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚îî‚îÄ‚ñÄ‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñÑ‚ñë‚ñë‚ñë‚ñÑ‚ñÑ‚ñÑ‚ñì‚ñë‚ñë‚ñÄ‚ñà‚ñÄ‚ñë‚ñë‚ñì‚ñÑ‚ñÑ‚ñÑ‚ñë‚ñë‚ñë‚ñÑ‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñÑ‚îÄ‚îò‚ñà‚ñà‚ñå‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñê‚ñà‚ñà‚îî‚îÄ‚ñÑ‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñë‚ñë‚ñê‚ñà‚îÄ‚î¨‚î¨‚î¨‚î¨‚î¨‚î¨‚î¨‚îÄ‚ñà‚ñå‚ñë‚ñë‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñå‚ñë‚ñë‚ñë‚ñÄ‚î¨‚îº‚îº‚îº‚îº‚îº‚îº‚îº‚î¨‚ñÄ‚ñë‚ñë‚ñë‚ñê‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñÑ‚ñë‚ñë‚ñë‚îî‚î¥‚î¥‚î¥‚î¥‚î¥‚î¥‚î¥‚îò‚ñë‚ñë‚ñë‚ñÑ‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñÑ‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñë‚ñÑ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñÑ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà
+"                         ‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà‚ñà
 "
 "   You are about to experience a potent dosage of Vim. Watch your steps.
 "
-"                ╔══════════════════════════════════════════╗
-"                ║           ⎋ HERE BE VIMPIRES ⎋           ║
-"                ╚══════════════════════════════════════════╝
-"                Source : mhinz/dotfiles/.vim/vimrc
+"                ‚ïî‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïó
+"                ‚ïë           ‚éã HERE BE VIMPIRES ‚éã           ‚ïë
+"                ‚ïö‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïù
 
 " This config works for both vim and nvim.
 set nocompatible            " Disable compatibility to old-time vi
@@ -78,14 +77,22 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'gorodinskiy/vim-coloresque'
 
 " Colors
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'joshdick/onedark.vim'
+Plugin 'ayu-theme/ayu-vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox',
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+"" Devicons
+"Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
@@ -99,11 +106,20 @@ call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
 
 " Color scheme after vim-colorschemes are loaded
-" Dark themes: onedark
-" Light themes: peachpuff, PaperColor
-"
+" Dark themes: onedark, ayu(dark)
+" Light themes: peachpuff, PaperColor, ayu(light)
+" set termguicolors 
+
+" Color onedark "
 colo onedark
 let g:onedark_terminal_italics=1
+
+" Color gruvvox "
+"colo gruvbox
+"set background=dark    " Setting dark mode
+"let g:gruvbox_italic=1
+"let g:gruvbox_contrast_dark='hard'
+
 
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
@@ -119,21 +135,30 @@ set diffopt+=vertical
 " let g:hardtime_default_on = 1
 
 " Markdown
+let g:vim_markdown_folding_disabled = 1
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<C-m>'
 
 " Ale fixers
 " let g:ale_fixers = ['prettier', 'eslint']
+"let g:ale_lint_on_save = 1
+"let g:ale_linters = {
+  "\ 'javascript': ['prettier', 'eslint']
+  "\}
+
 let g:ale_fixers = {
   \ 'javascript': ['prettier', 'eslint']
   \ }
+"let g:ale_fix_on_save = 1
 " Less aggressive than the default '>>'
-" let g:ale_sign_error = '●' 
+" let g:ale_sign_error = '‚óè' 
 nmap <leader>d <Plug>(ale_fix)
 
 " Map keys
-nnoremap <C-L> :nohl<CR><C-L>
-nmap <F6> :NERDTreeToggle<CR>
+nmap <leader>l :nohl<CR>
+nmap <leader>s :GitBlame<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
 nmap <F5> :10split term://zsh<CR>
 
 " Ignore some folders and files for CtrlP indexing
@@ -151,10 +176,22 @@ let g:mta_filetypes = {
     \ 'jsx' : 1
     \}
 
+"" Hybrid numbers
+"augroup numbertoggle
+  "autocmd!
+  "autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  "autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+"augroup END
+
 " Quicker window movement
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-l> <C-w>l
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" Quicker tab movement
+nmap <S-l> gt
+nmap <S-h> gT
 
 nmap <silent> <leader>o :!open %<CR>
+
