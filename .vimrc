@@ -45,6 +45,10 @@ set splitbelow              " default horizontal split below
 set splitright              " default vertical split right
 set cursorline
 " set mouse=a                 " mouse support on
+set guioptions=r
+set guioptions=l
+" Ture color for neovim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
  
 " Font for macvim
@@ -90,11 +94,13 @@ Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'morhetz/gruvbox',
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rakr/vim-one'
 
 "" Devicons
 "Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'takac/vim-hardtime'
@@ -110,23 +116,41 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 " Light themes: peachpuff, PaperColor, ayu(light)
 " set termguicolors 
 
+" Color onehalflight
+" colo onehalflight
+
+" Color one
+" colorscheme one
+" set background=light
+
+" Color papercolor
+"set background=light
+"colorscheme PaperColor
+"let g:PaperColor_Theme_Options = {
+  "\   'theme': {
+  "\        'allow_italic': 1
+  "\   }
+  "\ }
+
+" /Favourites "
+
 " Color onedark "
-colo onedark
-let g:onedark_terminal_italics=1
+"colo onedark
+"let g:onedark_terminal_italics=1
 
 " Color gruvvox "
-"colo gruvbox
-"set background=dark    " Setting dark mode
-"let g:gruvbox_italic=1
-"let g:gruvbox_contrast_dark='hard'
-
+let g:gruvbox_italic=1
+colo gruvbox
+set background=dark    " Setting dark mode
+let g:gruvbox_contrast_dark='medium'
 
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
+"let g:airline_theme='onedark'
 
 " Git stuff
 set diffopt+=vertical
@@ -141,15 +165,15 @@ let vim_markdown_preview_hotkey='<C-m>'
 
 " Ale fixers
 " let g:ale_fixers = ['prettier', 'eslint']
-"let g:ale_lint_on_save = 1
-"let g:ale_linters = {
-  "\ 'javascript': ['prettier', 'eslint']
-  "\}
+" let g:ale_lint_on_save = 1
+" let g:ale_linters = {
+"   \ 'javascript': ['prettier', 'eslint']
+"   \}
 
 let g:ale_fixers = {
   \ 'javascript': ['prettier', 'eslint']
   \ }
-"let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 " Less aggressive than the default '>>'
 " let g:ale_sign_error = '●' 
 nmap <leader>d <Plug>(ale_fix)

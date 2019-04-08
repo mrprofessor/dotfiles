@@ -1,13 +1,20 @@
 #!/bin/zsh
 
 # Setiing up vundle : a package manager for vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim --force
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# neovim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/neovim/bundle/Vundle.vim
+
 
 # Link vimrc
-ln -s -f ~/dotfiles/vimrc ~/.vim/vimrc
+# ln -s ~/dotfiles/.vimrc ~/.vim/vimrc
 
-# Install vim plugins
-vim +PluginInstall +qall
+# Link nvim config too
+ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+
+# Install neovim plugins
+nvim +PluginInstall +qall
 
 # Set up tmux
 # git clone https://github.com/gpakosz/.tmux.git ~/.tmux
@@ -19,6 +26,3 @@ cp ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
 
 # zsh setup
 ln -s -f ~/dotfiles/.zshrc ~/.zshrc
-
-
-
