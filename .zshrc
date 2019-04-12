@@ -20,14 +20,16 @@ ZSH_THEME="norm"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Aliases
+gituser() {
+	git config --global user.name && git config --global user.email
+}
 gitturbot() {
 	git config --global user.email 'rudra@turbot.com' && git config --global user.name 'Rudra Narayan'
+  gituser
 }
 gitprof() {
 	git config --global user.email 'kar.rudra008@gmail.com' && git config --global user.name 'mrprofessor'
-}
-gituser() {
-	git config --global user.name && git config --global user.email
+  gituser
 }
 
 #vim ==> nvim

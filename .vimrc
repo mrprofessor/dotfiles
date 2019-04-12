@@ -47,6 +47,7 @@ set cursorline
 " set mouse=a                 " mouse support on
 set guioptions=r
 set guioptions=l
+set guioptions-=L
 " Ture color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -107,6 +108,9 @@ Plugin 'takac/vim-hardtime'
 
 "Plugin 'elzr/vim-json'
 "Plugin 'Valloric/MatchTagAlways'
+
+"" Games
+Plugin 'johngrib/vim-game-snake'
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
