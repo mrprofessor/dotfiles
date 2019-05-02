@@ -7,6 +7,11 @@ export TURBOT_ENVIRONMENT=development
 export NODE_PATH=/Users/professor/turbot/turbot-core/lib
 export TURBOT_TEST=true
 
+# Ruby specific
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -132,3 +137,7 @@ if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

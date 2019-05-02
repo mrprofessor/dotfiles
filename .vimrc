@@ -44,16 +44,14 @@ set shell=/bin/zsh          " set default shell to zsh
 set splitbelow              " default horizontal split below
 set splitright              " default vertical split right
 set cursorline
-" set mouse=a                 " mouse support on
-set guioptions=r
-set guioptions=l
-set guioptions-=L
+" set mouse=a               " mouse support on
+set guioptions=             " remove both side scrollbars from macvim 
 " Ture color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
  
 " Font for macvim
-set guifont=Operator\ Mono\ Book:h18
+set guifont=Operator\ Mono\ Medium\ Nerd\ Font\ Complete:h16
 
 " To use fzf in Vim
 set rtp+=/usr/local/opt/fzf
@@ -92,22 +90,21 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'joshdick/onedark.vim'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'morhetz/gruvbox',
+Plugin 'morhetz/gruvbox'
+Plugin 'rakr/vim-one'
+Plugin 'dracula/vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rakr/vim-one'
 
-"" Devicons
-"Plugin 'ryanoasis/vim-devicons'
 
-Plugin 'rking/ag.vim'
+" Devicons
+Plugin 'ryanoasis/vim-devicons'
+
+" Search and file browser
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'takac/vim-hardtime'
-
-"Plugin 'elzr/vim-json'
-"Plugin 'Valloric/MatchTagAlways'
 
 "" Games
 Plugin 'johngrib/vim-game-snake'
