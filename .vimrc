@@ -106,8 +106,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'takac/vim-hardtime'
 
-"" Games
+" Games
 Plugin 'johngrib/vim-game-snake'
+
+" Auto completion
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
@@ -178,6 +181,9 @@ let g:ale_fixers = {
 " Less aggressive than the default '>>'
 " let g:ale_sign_error = '●' 
 nmap <leader>d <Plug>(ale_fix)
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Map keys
 nmap <leader>l :nohl<CR>
