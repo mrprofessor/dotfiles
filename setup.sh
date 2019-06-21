@@ -4,8 +4,10 @@
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # neovim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/neovim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 
+# Create nvim folder if not there
+mkdir -p ~/.config/nvim/
 
 # Link vimrc
 # ln -s ~/dotfiles/.vimrc ~/.vim/vimrc
