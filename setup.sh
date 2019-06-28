@@ -3,6 +3,9 @@
 # Setiing up vundle : a package manager for vim
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# Be advised
+# Never worked on first try
+
 # neovim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 
