@@ -49,6 +49,21 @@ set guioptions=             " remove both side scrollbars from macvim
 " Ture color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" PEP 8
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \  softtabstop=4
+    \  shiftwidth=4
+    \  textwidth=79
+    \  expandtab
+    \  autoindent
+    \  fileformat=unix
+
+" For javascript, HTML & CSS
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \  softtabstop=2
+    \  shiftwidth=2
  
 " Font for macvim
 set guifont=Operator\ Mono\ Medium\ Nerd\ Font\ Complete:h16
@@ -86,6 +101,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Colors
 Plugin 'NLKNguyen/papercolor-theme'
@@ -141,22 +160,22 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 " /Favourites "
 
 " Color onedark "
-"colo onedark
-"let g:onedark_terminal_italics=1
+colo onedark
+let g:onedark_terminal_italics=1
 
 " Color gruvvox "
-let g:gruvbox_italic=1
-colo gruvbox
-set background=dark    " Setting dark mode
-let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_italic=1
+"colo gruvbox
+"set background=dark    " Setting dark mode
+"let g:gruvbox_contrast_dark='medium'
 
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-"let g:airline_theme='onedark'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
 
 " Git stuff
 set diffopt+=vertical
@@ -227,3 +246,18 @@ nmap <S-l> gt
 nmap <S-h> gT
 
 nmap <silent> <leader>o :!open %<CR>
+
+" Python virtualenv awareness
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+EOF
+
+" Python syntax support!
+let python_highlight_all=1
+syntax on
+hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
