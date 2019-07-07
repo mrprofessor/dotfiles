@@ -3,9 +3,11 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/professor/.oh-my-zsh"
-export TURBOT_ENVIRONMENT=development
-export NODE_PATH=/Users/professor/turbot/turbot-core/lib
-export TURBOT_TEST=true
+
+# Turbot days
+#export TURBOT_ENVIRONMENT=development
+#export NODE_PATH=/Users/professor/turbot/turbot-core/lib
+#export TURBOT_TEST=true
 
 # Ruby specific
 export PATH=/usr/local/opt/ruby/bin:$PATH

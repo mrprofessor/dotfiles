@@ -49,7 +49,7 @@ set guioptions=             " remove both side scrollbars from macvim
 " Ture color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" PEP 8
+" PEP 8(python 3)
 au BufNewFile,BufRead *.py
     \ set tabstop=4
     \  softtabstop=4
@@ -59,12 +59,6 @@ au BufNewFile,BufRead *.py
     \  autoindent
     \  fileformat=unix
 
-" For javascript, HTML & CSS
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \  softtabstop=2
-    \  shiftwidth=2
- 
 " Font for macvim
 set guifont=Operator\ Mono\ Medium\ Nerd\ Font\ Complete:h16
 
@@ -104,6 +98,7 @@ Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'rizzatti/dash.vim'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Colors
@@ -116,6 +111,7 @@ Plugin 'rakr/vim-one'
 Plugin 'dracula/vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'liuchengxu/space-vim-dark'
 
 
 " Devicons
@@ -142,11 +138,11 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 " set termguicolors 
 
 " Color onehalflight
-" colo onehalflight
+"colo onehalfdark
 
 " Color one
-" colorscheme one
-" set background=light
+"colorscheme one
+"set background=light
 
 " Color papercolor
 "set background=light
@@ -156,6 +152,18 @@ filetype plugin indent on   " allows auto-indenting depending on file type
   "\        'allow_italic': 1
   "\   }
   "\ }
+
+
+" Color space-vim-dark
+"colo space-vim-dark
+"set termguicolors
+"hi LineNr ctermbg=NONE guibg=NONE
+"hi Comment cterm=italic
+" Python specific
+"hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
+"   Range:   233 (darkest) ~ 238 (lightest)
+"   Default: 235
+"let g:space_vim_dark_background = 234
 
 " /Favourites "
 
@@ -169,13 +177,15 @@ let g:onedark_terminal_italics=1
 "set background=dark    " Setting dark mode
 "let g:gruvbox_contrast_dark='medium'
 
+
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
 "let g:airline_theme='gruvbox'
-let g:airline_theme='onedark'
+"let g:airline_theme='onedark'
+"let g:airline_theme='papercolor'
 
 " Git stuff
 set diffopt+=vertical
@@ -260,4 +270,4 @@ EOF
 " Python syntax support!
 let python_highlight_all=1
 syntax on
-hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
+let g:pymode_python = 'python3'
