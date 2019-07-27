@@ -13,6 +13,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vund
 mkdir -p ~/.config/nvim/
 
 # Link vimrc
+#mkdir -p ~/.vim/
 # ln -s ~/dotfiles/.vimrc ~/.vim/vimrc
 
 # Link nvim config too

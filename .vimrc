@@ -22,7 +22,7 @@
 "   You are about to experience a potent dosage of Vim. Watch your steps.
 "
 "                ╔══════════════════════════════════════════╗
-"                ║           ⎋ HERE BE VIMPIRES ⎋           ║
+"                ║           ⎋ HERE BE CONQUERORS ⎋         ║
 "                ╚══════════════════════════════════════════╝
 
 " This config works for both vim and nvim.
@@ -60,7 +60,8 @@ au BufNewFile,BufRead *.py
     \  fileformat=unix
 
 " Font for macvim
-set guifont=Operator\ Mono\ Medium\ Nerd\ Font\ Complete:h16
+set guifont=Operator\ Mono\ Medium\ Nerd\ Font:h16
+"set guifont=Operator\ Mono\ Light:h14
 
 " To use fzf in Vim
 set rtp+=/usr/local/opt/fzf
@@ -77,29 +78,27 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'zivyangll/git-blame.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-startify'
 Plugin 'prettier/vim-prettier'
 
-Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'rizzatti/dash.vim'
+Plugin 'jeetsukumaran/vim-pythonsense'
+"Plugin 'vim-syntastic/syntastic'
+
+" Languages
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plugin 'plasticboy/vim-markdown'
+Plugin 'cakebaker/scss-syntax.vim'
 
 " Colors
 Plugin 'NLKNguyen/papercolor-theme'
@@ -113,7 +112,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'liuchengxu/space-vim-dark'
 
-
 " Devicons
 Plugin 'ryanoasis/vim-devicons'
 
@@ -123,11 +121,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'takac/vim-hardtime'
 
-" Games
-Plugin 'johngrib/vim-game-snake'
-
 " Auto completion
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'zchee/deoplete-jedi'
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
@@ -137,11 +133,12 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 " Light themes: peachpuff, PaperColor, ayu(light)
 " set termguicolors 
 
-" Color onehalflight
+ "Color onehalfdark
 "colo onehalfdark
 
 " Color one
 "colorscheme one
+"let g:one_allow_italics = 1
 "set background=light
 
 " Color papercolor
@@ -184,7 +181,9 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
 "let g:airline_theme='gruvbox'
-"let g:airline_theme='onedark'
+let g:airline_theme='onedark'
+"let g:airline_theme='onehalflight'
+"let g:airline_theme='one'
 "let g:airline_theme='papercolor'
 
 " Git stuff
@@ -195,19 +194,28 @@ set diffopt+=vertical
 
 " Markdown
 let g:vim_markdown_folding_disabled = 1
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-m>'
 
 " Ale fixers
 " let g:ale_fixers = ['prettier', 'eslint']
 " let g:ale_lint_on_save = 1
-" let g:ale_linters = {
-"   \ 'javascript': ['prettier', 'eslint']
-"   \}
+let g:ale_linters = {
+  \ 'python': ['flake8']
+  \}
+
+"\ 'javascript': ['prettier', 'eslint']
 
 let g:ale_fixers = {
-  \ 'javascript': ['prettier', 'eslint']
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'python': ['flake8']
   \ }
+
+"let b:ale_linters = ['flake8']
+let b:ale_fixers = [
+\   'remove_trailing_lines',
+\   'isort',
+\   'ale#fixers#generic_python#BreakUpLongLines',
+\   'yapf',
+\]
 " let g:ale_fix_on_save = 1
 " Less aggressive than the default '>>'
 " let g:ale_sign_error = '●' 
@@ -269,5 +277,15 @@ EOF
 
 " Python syntax support!
 let python_highlight_all=1
-syntax on
 let g:pymode_python = 'python3'
+"let g:pymode_python = 'disable'
+let g:pymode_lint = 0 " Disable pymode_lint
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_message = 1
+let g:pymode_rope = 0
+
+" https://vi.stackexchange.com/questions/7932/sourcing-vimrc-file-put-square-brackets-around-file-icons/7974
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
