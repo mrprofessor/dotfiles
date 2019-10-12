@@ -19,12 +19,7 @@
 "                         ██████████▄▄▄▄▄▄▄██████████
 "                         ███████████████████████████
 "
-"   You are about to experience a potent dosage of Vim. Watch your steps.
 "
-"                ╔══════════════════════════════════════════╗
-"                ║           ⎋ HERE BE CONQUERORS ⎋         ║
-"                ╚══════════════════════════════════════════╝
-
 " This config works for both vim and nvim.
 set nocompatible            " Disable compatibility to old-time vi
 set showmatch               " Show matching brackets.
@@ -47,6 +42,7 @@ set cursorline
 " set mouse=a               " mouse support on
 set guioptions=             " remove both side scrollbars from macvim 
 " Ture color for neovim
+set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " PEP 8(python 3)
@@ -80,7 +76,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'scrooloose/nerdcommenter'
 
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-startify'
 Plugin 'prettier/vim-prettier'
@@ -90,7 +86,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'heavenshell/vim-pydocstring'
+Plugin 'ambv/black'
 "Plugin 'vim-syntastic/syntastic'
+"Plugin 'lucapette/vim-textobj-underscore'
 
 " Languages
 Plugin 'mxw/vim-jsx'
@@ -99,6 +98,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'l04m33/vlime'
 
 " Colors
 Plugin 'NLKNguyen/papercolor-theme'
@@ -124,6 +124,12 @@ Plugin 'takac/vim-hardtime'
 " Auto completion
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'zchee/deoplete-jedi'
+Plugin 'liuchengxu/vim-clap'
+
+" Float baby float
+Plugin 'voldikss/vim-floaterm'
+"Plugin 'ncm2/float-preview.nvim'
+
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
@@ -165,14 +171,14 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 " /Favourites "
 
 " Color onedark "
-colo onedark
-let g:onedark_terminal_italics=1
+"colo onedark
+"let g:onedark_terminal_italics=1
 
 " Color gruvvox "
-"let g:gruvbox_italic=1
-"colo gruvbox
-"set background=dark    " Setting dark mode
-"let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_italic=1
+colo gruvbox
+set background=dark    " Setting dark mode
+let g:gruvbox_contrast_dark='medium'
 
 
 " Airline stuff
@@ -180,8 +186,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
-"let g:airline_theme='gruvbox'
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
+"let g:airline_theme='onedark'
 "let g:airline_theme='onehalflight'
 "let g:airline_theme='one'
 "let g:airline_theme='papercolor'
@@ -198,27 +204,34 @@ let g:vim_markdown_folding_disabled = 1
 " Ale fixers
 " let g:ale_fixers = ['prettier', 'eslint']
 " let g:ale_lint_on_save = 1
+let g:black_linelength = 80
 let g:ale_linters = {
-  \ 'python': ['flake8']
+  \ 'python': ['flake8'],
+  \ 'javascript': ['prettier', 'eslint']
   \}
 
-"\ 'javascript': ['prettier', 'eslint']
 
+  "\ 'python': ['black']
+  "\ 'javascript': ['prettier', 'eslint']
 let g:ale_fixers = {
-  \ 'javascript': ['prettier', 'eslint'],
-  \ 'python': ['flake8']
+  \ 'python': ['black']
   \ }
 
+let g:black_linelength = 80
+  "\ 'javascript': ['prettier', 'eslint']
 "let b:ale_linters = ['flake8']
-let b:ale_fixers = [
-\   'remove_trailing_lines',
-\   'isort',
-\   'ale#fixers#generic_python#BreakUpLongLines',
-\   'yapf',
-\]
+"let b:ale_fixers = [
+"\   'remove_trailing_lines',
+"\   'isort',
+"\   'ale#fixers#generic_python#BreakUpLongLines',
+"\   'yapf',
+"\]
 " let g:ale_fix_on_save = 1
 " Less aggressive than the default '>>'
-" let g:ale_sign_error = '●' 
+let g:ale_sign_error = '●' 
+
+" Run Black on save 
+"autocmd BufWritePre *.py execute ':Black'
 nmap <leader>d <Plug>(ale_fix)
 
 " Use deoplete.
@@ -232,8 +245,19 @@ nmap <leader>f :NERDTreeFind<CR>
 nmap <F5> :10split term://zsh<CR>
 
 " Ignore some folders and files for CtrlP indexing
+
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/env/*     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/]\.(git|hg|svn|env)$',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ 'link': 'some_bad_symbolic_links',
+  "\ }
+  
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$|env\|myenv\|htmlcov/',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
@@ -265,16 +289,6 @@ nmap <S-h> gT
 
 nmap <silent> <leader>o :!open %<CR>
 
-" Python virtualenv awareness
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-EOF
-
 " Python syntax support!
 let python_highlight_all=1
 let g:pymode_python = 'python3'
@@ -288,4 +302,20 @@ let g:pymode_rope = 0
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
     call webdevicons#refresh()
-endif
+  endif
+
+
+" Floating stuff
+noremap  <leader>t  :FloatermToggle<CR>i
+noremap! <leader>t  <Esc>:FloatermToggle<CR>i
+tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_width = 100
+let g:floaterm_winblend = 100
+
+
+
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>

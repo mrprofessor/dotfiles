@@ -1,6 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export LC_ALL=en_US.UTF-8
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/professor/.oh-my-zsh"
 
@@ -8,6 +14,10 @@ export ZSH="/Users/professor/.oh-my-zsh"
 #export TURBOT_ENVIRONMENT=development
 #export NODE_PATH=/Users/professor/turbot/turbot-core/lib
 #export TURBOT_TEST=true
+
+# emacs
+export PATH=$PATH:/usr/local/sbin
+export PATH=/usr/local/Cellar/emacs-plus/26.3:$PATH
 
 # Ruby specific
 export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -25,6 +35,9 @@ alias py='python3'
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="norm"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="amuse"
+#ZSH_THEME="sunrise"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -52,10 +65,18 @@ gitprof() {
   #gituser
 #}
 
-#vim ==> nvim
+# vim ==> nvim
 alias oldvim="vim"
 alias vim="nvim"
 alias vi="nvim"
+
+# emacs ==> spacemacs
+alias emacs="emacs -nw"
+
+# Support Emacs
+if [[ $TERM = dumb ]]; then
+    unset zle_bracketed_paste
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -150,7 +171,9 @@ if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Removed iterm shell integration in favour of emacs
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# source ~/.iterm2_shell_integration.zsh
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -158,3 +181,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/node@10/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
