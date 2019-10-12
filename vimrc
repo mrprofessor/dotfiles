@@ -55,9 +55,8 @@ au BufNewFile,BufRead *.py
     \  autoindent
     \  fileformat=unix
 
-" Font for macvim
+" Font for gui
 set guifont=Operator\ Mono\ Medium\ Nerd\ Font:h16
-"set guifont=Operator\ Mono\ Light:h14
 
 " To use fzf in Vim
 set rtp+=/usr/local/opt/fzf
@@ -133,10 +132,145 @@ Plugin 'voldikss/vim-floaterm'
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
+" Color gruvvox "
+let g:gruvbox_italic=1
+colo gruvbox
+set background=dark    " Setting dark mode
+let g:gruvbox_contrast_dark='medium'
 
+
+" Airline stuff
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
+
+" Git stuff
+set diffopt+=vertical
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+
+" Ale fixers
+" let g:ale_lint_on_save = 1
+let g:black_linelength = 80
+let g:ale_linters = {
+  \ 'python': ['flake8'],
+  \ 'javascript': ['prettier', 'eslint']
+  \}
+
+
+  "\ 'python': ['black']
+  "\ 'javascript': ['prettier', 'eslint']
+let g:ale_fixers = {
+  \ 'python': ['black']
+  \ }
+
+let g:black_linelength = 80
+" let g:ale_fix_on_save = 1
+"
+" Less aggressive than the default '>>'
+let g:ale_sign_error = '●' 
+
+" Run Black on save 
+"autocmd BufWritePre *.py execute ':Black'
+nmap <leader>d <Plug>(ale_fix)
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Map keys
+nmap <leader>l :nohl<CR>
+nmap <leader>s :GitBlame<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <F5> :10split term://zsh<CR>
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$|env\|myenv\|htmlcov/',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+"" Match tag always setup
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'jsx' : 1
+    \}
+
+" Quicker window movement
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" Quicker tab movement
+nmap <S-l> gt
+nmap <S-h> gT
+
+nmap <silent> <leader>o :!open %<CR>
+
+" Python syntax support!
+let python_highlight_all=1
+let g:pymode_python = 'python3'
+"let g:pymode_python = 'disable'
+let g:pymode_lint = 0 " Disable pymode_lint
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_message = 1
+let g:pymode_rope = 0
+
+" https://vi.stackexchange.com/questions/7932/sourcing-vimrc-file-put-square-brackets-around-file-icons/7974
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+  endif
+
+
+" Floating stuff
+noremap  <leader>t  :FloatermToggle<CR>i
+noremap! <leader>t  <Esc>:FloatermToggle<CR>i
+tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_width = 100
+let g:floaterm_winblend = 0
+
+
+
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" COMMENT OUT FOR QUICK HACKS
+
+" --------------------- Hybrid numbers
+"augroup numbertoggle
+  "autocmd!
+  "autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  "autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+"augroup END
+
+
+" --------------------- Ignore some folders and files for CtrlP indexing
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/env/*     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/]\.(git|hg|svn|env)$',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ 'link': 'some_bad_symbolic_links',
+  "\ }
+  
+
+" --------------------- vim colorschemes
 " Color scheme after vim-colorschemes are loaded
 " Dark themes: onedark, ayu(dark)
 " Light themes: peachpuff, PaperColor, ayu(light)
+
 " set termguicolors 
 
  "Color onehalfdark
@@ -174,148 +308,6 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 "colo onedark
 "let g:onedark_terminal_italics=1
 
-" Color gruvvox "
-let g:gruvbox_italic=1
-colo gruvbox
-set background=dark    " Setting dark mode
-let g:gruvbox_contrast_dark='medium'
 
-
-" Airline stuff
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-"let g:airline_theme='onedark'
-"let g:airline_theme='onehalflight'
-"let g:airline_theme='one'
-"let g:airline_theme='papercolor'
-
-" Git stuff
-set diffopt+=vertical
-
-" Vim hardtime
+" --------------------- Vim hardtime
 " let g:hardtime_default_on = 1
-
-" Markdown
-let g:vim_markdown_folding_disabled = 1
-
-" Ale fixers
-" let g:ale_fixers = ['prettier', 'eslint']
-" let g:ale_lint_on_save = 1
-let g:black_linelength = 80
-let g:ale_linters = {
-  \ 'python': ['flake8'],
-  \ 'javascript': ['prettier', 'eslint']
-  \}
-
-
-  "\ 'python': ['black']
-  "\ 'javascript': ['prettier', 'eslint']
-let g:ale_fixers = {
-  \ 'python': ['black']
-  \ }
-
-let g:black_linelength = 80
-  "\ 'javascript': ['prettier', 'eslint']
-"let b:ale_linters = ['flake8']
-"let b:ale_fixers = [
-"\   'remove_trailing_lines',
-"\   'isort',
-"\   'ale#fixers#generic_python#BreakUpLongLines',
-"\   'yapf',
-"\]
-" let g:ale_fix_on_save = 1
-" Less aggressive than the default '>>'
-let g:ale_sign_error = '●' 
-
-" Run Black on save 
-"autocmd BufWritePre *.py execute ':Black'
-nmap <leader>d <Plug>(ale_fix)
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-" Map keys
-nmap <leader>l :nohl<CR>
-nmap <leader>s :GitBlame<CR>
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
-nmap <F5> :10split term://zsh<CR>
-
-" Ignore some folders and files for CtrlP indexing
-
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/env/*     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/]\.(git|hg|svn|env)$',
-  "\ 'file': '\v\.(exe|so|dll)$',
-  "\ 'link': 'some_bad_symbolic_links',
-  "\ }
-  
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$|env\|myenv\|htmlcov/',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
-
-"" Match tag always setup
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'jsx' : 1
-    \}
-
-"" Hybrid numbers
-"augroup numbertoggle
-  "autocmd!
-  "autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-  "autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
-"augroup END
-
-" Quicker window movement
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-
-" Quicker tab movement
-nmap <S-l> gt
-nmap <S-h> gT
-
-nmap <silent> <leader>o :!open %<CR>
-
-" Python syntax support!
-let python_highlight_all=1
-let g:pymode_python = 'python3'
-"let g:pymode_python = 'disable'
-let g:pymode_lint = 0 " Disable pymode_lint
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_message = 1
-let g:pymode_rope = 0
-
-" https://vi.stackexchange.com/questions/7932/sourcing-vimrc-file-put-square-brackets-around-file-icons/7974
-" after a re-source, fix syntax matching issues (concealing brackets):
-if exists('g:loaded_webdevicons')
-    call webdevicons#refresh()
-  endif
-
-
-" Floating stuff
-noremap  <leader>t  :FloatermToggle<CR>i
-noremap! <leader>t  <Esc>:FloatermToggle<CR>i
-tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
-let g:floaterm_width = 100
-let g:floaterm_winblend = 100
-
-
-
-" Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
