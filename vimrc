@@ -85,8 +85,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jeetsukumaran/vim-pythonsense'
-Plugin 'heavenshell/vim-pydocstring'
 Plugin 'ambv/black'
+"Plugin 'heavenshell/vim-pydocstring'
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'lucapette/vim-textobj-underscore'
 
@@ -110,6 +110,7 @@ Plugin 'dracula/vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'liuchengxu/space-vim-dark'
+Plugin 'sjl/badwolf'
 
 " Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -123,11 +124,11 @@ Plugin 'takac/vim-hardtime'
 " Auto completion
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'zchee/deoplete-jedi'
-Plugin 'liuchengxu/vim-clap'
+"Plugin 'ncm2/float-preview.nvim'
 
 " Float baby float
 Plugin 'voldikss/vim-floaterm'
-"Plugin 'ncm2/float-preview.nvim'
+Plugin 'liuchengxu/vim-clap'
 
 
 call vundle#end()
@@ -144,7 +145,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='ayu'
 
 " Git stuff
 set diffopt+=vertical
@@ -234,7 +236,8 @@ noremap  <leader>t  :FloatermToggle<CR>i
 noremap! <leader>t  <Esc>:FloatermToggle<CR>i
 tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_width = 100
-let g:floaterm_winblend = 0
+let g:floaterm_winblend = 30
+let g:floaterm_background = '#000000'
 
 
 
@@ -244,54 +247,7 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-" COMMENT OUT FOR QUICK HACKS
-
-" --------------------- Hybrid numbers
-"augroup numbertoggle
-  "autocmd!
-  "autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-  "autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
-"augroup END
-
-
-" --------------------- Ignore some folders and files for CtrlP indexing
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/env/*     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/]\.(git|hg|svn|env)$',
-  "\ 'file': '\v\.(exe|so|dll)$',
-  "\ 'link': 'some_bad_symbolic_links',
-  "\ }
-  
-
-" --------------------- vim colorschemes
-" Color scheme after vim-colorschemes are loaded
-" Dark themes: onedark, ayu(dark)
-" Light themes: peachpuff, PaperColor, ayu(light)
-
-" set termguicolors 
-
- "Color onehalfdark
-"colo onehalfdark
-
-" Color one
-"colorscheme one
-"let g:one_allow_italics = 1
-"set background=light
-
-" Color papercolor
-"set background=light
-"colorscheme PaperColor
-"let g:PaperColor_Theme_Options = {
-  "\   'theme': {
-  "\        'allow_italic': 1
-  "\   }
-  "\ }
-
-
-" Color space-vim-dark
+" space-vim-dark
 "colo space-vim-dark
 "set termguicolors
 "hi LineNr ctermbg=NONE guibg=NONE
@@ -311,3 +267,11 @@ noremap <Right> <Nop>
 
 " --------------------- Vim hardtime
 " let g:hardtime_default_on = 1
+
+"...
+"set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
+
