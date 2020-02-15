@@ -35,6 +35,7 @@ alias py='python3'
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="norm"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="amuse"
 #ZSH_THEME="sunrise"
@@ -58,6 +59,9 @@ gitprof() {
 	git config --global user.email 'kar.rudra008@gmail.com' && git config --global user.name 'mrprofessor'
   gituser
 }
+gitlines() {
+ git ls-files -- '*.py' ':!:*.' | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
+}
 
 # Previous companies
 #gitturbot() {
@@ -69,6 +73,10 @@ gitprof() {
 alias oldvim="vim"
 alias vim="nvim"
 alias vi="nvim"
+
+# brew/cargo install exa 
+# A modern replacement for ls.
+alias l="exa -l"
 
 # emacs ==> spacemacs
 alias emacs="emacs -nw"

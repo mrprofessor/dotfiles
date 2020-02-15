@@ -37,5 +37,5 @@ cp ~/dotfiles/tmux.conf.local ~/.tmux.conf.local
 ln -s -f ~/dotfiles/zshrc ~/.zshrc
 
 # spacemacs setup
-ln -s -f ~/dotfiles/spacemacs ~/.spacemacs
+#ln -s -f ~/dotfiles/spacemacs ~/.spacemacs
 

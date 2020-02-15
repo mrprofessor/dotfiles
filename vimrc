@@ -86,7 +86,7 @@ Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'ambv/black'
-"Plugin 'heavenshell/vim-pydocstring'
+Plugin 'heavenshell/vim-pydocstring'
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'lucapette/vim-textobj-underscore'
 
@@ -100,17 +100,19 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'l04m33/vlime'
 
 " Colors
+Plugin 'phanviet/vim-monokai-pro'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'joshdick/onedark.vim'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'morhetz/gruvbox'
-Plugin 'rakr/vim-one'
-Plugin 'dracula/vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'liuchengxu/space-vim-dark'
-Plugin 'sjl/badwolf'
+"Plugin 'dracula/vim'
+"Plugin 'rakr/vim-one'
+"Plugin 'joshdick/onedark.vim'
+"Plugin 'liuchengxu/space-vim-dark'
+"Plugin 'sjl/badwolf'
+"Plugin 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 
 " Devicons
 Plugin 'ryanoasis/vim-devicons'
@@ -130,6 +132,9 @@ Plugin 'zchee/deoplete-jedi'
 Plugin 'voldikss/vim-floaterm'
 Plugin 'liuchengxu/vim-clap'
 
+" Distraction free vim
+Plugin 'junegunn/goyo.vim'
+
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
@@ -145,8 +150,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='gruvbox'
-let g:airline_theme='ayu'
+let g:airline_theme='gruvbox'
 
 " Git stuff
 set diffopt+=vertical
@@ -166,14 +170,20 @@ let g:ale_linters = {
   "\ 'python': ['black']
   "\ 'javascript': ['prettier', 'eslint']
 let g:ale_fixers = {
-  \ 'python': ['black']
+  \ 'python': ['black'],
+  \ 'javascript': ['prettier', 'eslint']
   \ }
 
 let g:black_linelength = 80
 " let g:ale_fix_on_save = 1
 "
 " Less aggressive than the default '>>'
-let g:ale_sign_error = '●' 
+" let g:ale_sign_error = '●' 
+" Poop for error
+"let g:ale_sign_error = '💩'
+let g:ale_sign_error = '🚨'
+
+
 
 " Run Black on save 
 "autocmd BufWritePre *.py execute ':Black'
@@ -232,13 +242,21 @@ if exists('g:loaded_webdevicons')
 
 
 " Floating stuff
-noremap  <leader>t  :FloatermToggle<CR>i
-noremap! <leader>t  <Esc>:FloatermToggle<CR>i
-tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
-let g:floaterm_width = 100
-let g:floaterm_winblend = 30
-let g:floaterm_background = '#000000'
+"let g:floaterm_keymap_toggle = '<Leader>t'
+"noremap  <leader>t  :FloatermToggle<CR>i
+"noremap! <leader>t  <Esc>:FloatermToggle<CR>i
+"tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+"let g:floaterm_width = 100
+""let g:floaterm_winblend = 10
+"let g:floaterm_background = '#000000'
 
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<leader>t'
+
+" PydocString
+nmap <silent> <leader>e <Plug>(pydocstring)
 
 
 " Disable arrow keys
@@ -260,7 +278,7 @@ noremap <Right> <Nop>
 
 " /Favourites "
 
-" Color onedark "
+ "Color onedark "
 "colo onedark
 "let g:onedark_terminal_italics=1
 
@@ -272,6 +290,5 @@ noremap <Right> <Nop>
 "set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of theme
+"let ayucolor="dark"   " for dark version of them
 "colorscheme ayu
-
