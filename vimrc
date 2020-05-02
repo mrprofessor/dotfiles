@@ -98,6 +98,7 @@ Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'l04m33/vlime'
+Plugin 'kylef/apiblueprint.vim'
 
 " Colors
 Plugin 'phanviet/vim-monokai-pro'

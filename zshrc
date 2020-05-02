@@ -51,8 +51,8 @@ ZSH_THEME="norm"
 gituser() {
 	git config --global user.name && git config --global user.email
 }
-gitinfo() {
-	git config --global user.email 'rudra.narayan@advantagesolutions.net' && git config --global user.name 'Rudra Narayan'
+gitturbot() {
+  git config --global user.email 'rudra@turbot.com' && git config --global user.name 'Rudra Narayan'
   gituser
 }
 gitprof() {
@@ -62,12 +62,6 @@ gitprof() {
 gitlines() {
  git ls-files -- '*.py' ':!:*.' | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
 }
-
-# Previous companies
-#gitturbot() {
-	#git config --global user.email 'rudra@turbot.com' && git config --global user.name 'Rudra Narayan'
-  #gituser
-#}
 
 # vim ==> nvim
 alias oldvim="vim"
