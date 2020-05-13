@@ -56,13 +56,19 @@ au BufNewFile,BufRead *.py
     \  fileformat=unix
 
 " Font for gui
-set guifont=Operator\ Mono\ Medium\ Nerd\ Font:h16
+set guifont=Operator\ Mono\ Book\ Nerd\ Font:h18
 
 " To use fzf in Vim
 set rtp+=/usr/local/opt/fzf
 
 " toggle spelling
 nnoremap <leader>s :set invspell<CR>
+
+
+
+"===========================================================
+" BEGIN  PLUGINS
+"===========================================================
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
@@ -94,6 +100,7 @@ Plugin 'heavenshell/vim-pydocstring'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'fatih/vim-go'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -127,7 +134,11 @@ Plugin 'takac/vim-hardtime'
 " Auto completion
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'zchee/deoplete-jedi'
-"Plugin 'ncm2/float-preview.nvim'
+Plugin 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+" vim8 specific
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 
 " Float baby float
 Plugin 'voldikss/vim-floaterm'
@@ -136,21 +147,22 @@ Plugin 'liuchengxu/vim-clap'
 " Distraction free vim
 Plugin 'junegunn/goyo.vim'
 
+" Tags
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type
-" Color gruvvox "
-let g:gruvbox_italic=1
-colo gruvbox
-set background=dark    " Setting dark mode
-let g:gruvbox_contrast_dark='medium'
 
+"===========================================================
+" END  PLUGINS
+"===========================================================
 
 " Airline stuff
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+"let g:airline_theme='onehalfdark'
 let g:airline_theme='gruvbox'
 
 " Git stuff
@@ -159,7 +171,7 @@ set diffopt+=vertical
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 
-" Ale fixers
+" Ale linters
 " let g:ale_lint_on_save = 1
 let g:black_linelength = 80
 let g:ale_linters = {
@@ -168,19 +180,19 @@ let g:ale_linters = {
   \}
 
 
-  "\ 'python': ['black']
-  "\ 'javascript': ['prettier', 'eslint']
+" Ale fixers
+"\ 'python': ['black'],
 let g:ale_fixers = {
-  \ 'python': ['black'],
+  \ 'python': ['autopep8'],
+  \ 'go': ['gofmt'],
   \ 'javascript': ['prettier', 'eslint']
   \ }
 
 let g:black_linelength = 80
-" let g:ale_fix_on_save = 1
-"
+
+" Custom error signs
 " Less aggressive than the default '>>'
 " let g:ale_sign_error = '●' 
-" Poop for error
 "let g:ale_sign_error = '💩'
 let g:ale_sign_error = '🚨'
 
@@ -243,14 +255,6 @@ if exists('g:loaded_webdevicons')
 
 
 " Floating stuff
-"let g:floaterm_keymap_toggle = '<Leader>t'
-"noremap  <leader>t  :FloatermToggle<CR>i
-"noremap! <leader>t  <Esc>:FloatermToggle<CR>i
-"tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
-"let g:floaterm_width = 100
-""let g:floaterm_winblend = 10
-"let g:floaterm_background = '#000000'
-
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
@@ -259,12 +263,30 @@ let g:floaterm_keymap_toggle = '<leader>t'
 " PydocString
 nmap <silent> <leader>e <Plug>(pydocstring)
 
+" Tagbar
+nmap <leader>g :TagbarToggle<CR>
+
 
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+
+" --------------------- Vim hardtime
+"let g:hardtime_default_on = 1
+
+
+"===========================================================
+" BEGIN COLORS
+"===========================================================
+
+" Color gruvvox "
+let g:gruvbox_italic=1
+colo gruvbox
+set background=dark    " Setting dark mode
+let g:gruvbox_contrast_dark='medium'
 
 " space-vim-dark
 "colo space-vim-dark
@@ -283,13 +305,14 @@ noremap <Right> <Nop>
 "colo onedark
 "let g:onedark_terminal_italics=1
 
-
-" --------------------- Vim hardtime
-" let g:hardtime_default_on = 1
-
 "...
 "set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of them
 "colorscheme ayu
+"
+
+"===========================================================
+" END COLORS
+"===========================================================

@@ -24,6 +24,14 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+
+# Go specific
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# Ctags if exuberent-ctags is present
+alias ctags="`brew --prefix`/bin/ctags"
+
 # Setting PATH for Python 3
 # The original version is saved in .bash_profile.pysave
 #PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
