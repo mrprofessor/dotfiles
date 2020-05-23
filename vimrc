@@ -45,6 +45,12 @@ set guioptions=             " remove both side scrollbars from macvim
 set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" set leader key
+let mapleader=" "
+nnoremap <SPACE> <Nop>
+
+
+
 " PEP 8(python 3)
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -115,6 +121,8 @@ Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'srcery-colors/srcery-vim'
 "Plugin 'dracula/vim'
 "Plugin 'rakr/vim-one'
 "Plugin 'joshdick/onedark.vim'
@@ -163,7 +171,8 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='onehalfdark'
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='srcery'
 
 " Git stuff
 set diffopt+=vertical
@@ -287,6 +296,15 @@ let g:gruvbox_italic=1
 colo gruvbox
 set background=dark    " Setting dark mode
 let g:gruvbox_contrast_dark='medium'
+
+" Color srcery-vim
+let g:srcery_italic=1
+let g:srcery_bold=1
+colorscheme srcery
+
+" Color jellybeans
+"let g:jellybeans_use_term_italics = 1
+"colorscheme jellybeans
 
 " space-vim-dark
 "colo space-vim-dark
