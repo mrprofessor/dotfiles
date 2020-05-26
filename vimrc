@@ -46,8 +46,9 @@ set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " set leader key
-let mapleader=" "
-nnoremap <SPACE> <Nop>
+" Currently breaks float-term
+"let mapleader=" "
+"nnoremap <SPACE> <Nop>
 
 
 

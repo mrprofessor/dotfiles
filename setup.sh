@@ -6,6 +6,13 @@
 # Setiing up vundle : a package manager for vim
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# Alacritty setup
+#brew cask install alacritty
+# Create alacritty folder
+#mkdir -p ~/.config/alacritty/
+#ln -s ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+
+
 # Be advised
 # Never worked on first try
 
@@ -28,14 +35,24 @@ nvim +PluginInstall +qall
 # Set up tmux
 # git clone https://github.com/gpakosz/.tmux.git ~/.tmux --force
 # ln -s -f .tmux/.tmux.conf ~/.tmux.conf
-ln -s -f ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+#ln -s -f ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # Copy my tmux file to root
-cp ~/dotfiles/tmux.conf.local ~/.tmux.conf.local
+#ln ~/dotfiles/tmux/tmux.conf.local ~/.tmux.conf.local
+
+ln -s -f ~/dotfiles/tmux.conf ~/.tmux.conf
 
 # zsh setup
 ln -s -f ~/dotfiles/zshrc ~/.zshrc
 
 # spacemacs setup
 #ln -s -f ~/dotfiles/spacemacs ~/.spacemacs
+
+
+# doom setup
+mkdir -p ~/.doom.d/
+ln ~/dotfiles/doom.d/config.el ~/.doom.d/config.el
+ln ~/dotfiles/doom.d/init.el ~/.doom.d/init.el
+ln ~/dotfiles/doom.d/packages.el ~/.doom.d/packages.el
+vim doom.d/packages.el
 

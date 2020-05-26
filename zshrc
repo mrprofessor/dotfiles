@@ -2,28 +2,26 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Removing to speedup zsh initialization
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
+alias loadnvm_completion='[ -s "$NVM_DIR/bash_completion" ] && . ""$NVM_DIR/bash_completion"'
 
 export LC_ALL=en_US.UTF-8
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/professor/.oh-my-zsh"
 
-# Turbot days
-#export TURBOT_ENVIRONMENT=development
-#export NODE_PATH=/Users/professor/turbot/turbot-core/lib
-#export TURBOT_TEST=true
-
 # emacs
-export PATH=$PATH:/usr/local/sbin
-export PATH=/usr/local/Cellar/emacs-plus/26.3:$PATH
+#export PATH=$PATH:/usr/local/sbin
+#export PATH=/usr/local/Cellar/emacs-plus/26.3:$PATH
+export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
 
 # Ruby specific
 export PATH=/usr/local/opt/ruby/bin:$PATH
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
-
 
 # Go specific
 export GOPATH=$HOME/go
@@ -34,7 +32,7 @@ alias ctags="`brew --prefix`/bin/ctags"
 
 # Setting PATH for Python 3
 # The original version is saved in .bash_profile.pysave
-#PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+eval "$(pyenv init -)"
 #export PATH
 alias python='python3'
 alias py='python3'
@@ -43,10 +41,6 @@ alias py='python3'
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="norm"
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="agnoster"
-#ZSH_THEME="amuse"
-#ZSH_THEME="sunrise"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -80,7 +74,7 @@ alias vi="nvim"
 # A modern replacement for ls.
 alias l="exa -l"
 
-# emacs ==> spacemacs
+# emacs ==> doom emacs
 alias emacs="emacs -nw"
 
 # Support Emacs
@@ -174,23 +168,13 @@ if [ -f '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/U
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
 # Removed iterm shell integration in favour of emacs
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # source ~/.iterm2_shell_integration.zsh
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
