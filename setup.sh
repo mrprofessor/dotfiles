@@ -1,58 +1,83 @@
-#!/bin/zsh
-
-# Install oh my zsh
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Setiing up vundle : a package manager for vim
-# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-# Alacritty setup
-#brew cask install alacritty
-# Create alacritty folder
-#mkdir -p ~/.config/alacritty/
-#ln -s ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
-
-
+#!/bin/bash
 # Be advised
 # Never worked on first try
+# Prerequisite: xcode --select-install
 
-# neovim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 
-# Create nvim folder if not there
-mkdir -p ~/.config/nvim/
+############################################################
+# Homebrew - Mac os package manager
+############################################################
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-# Link vimrc
-#mkdir -p ~/.vim/
-# ln -s ~/dotfiles/vimrc ~/.vim/vimrc
 
-# Link nvim config too
-ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+############################################################
+# Oh-my-zsh - A better shell
+############################################################
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ln -s -f ~/dotfiles/zshrc ~/.zshrc # Link zshrc
 
-# Install neovim plugins
-nvim +PluginInstall +qall
 
-# Set up tmux
-# git clone https://github.com/gpakosz/.tmux.git ~/.tmux --force
-# ln -s -f .tmux/.tmux.conf ~/.tmux.conf
-#ln -s -f ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+############################################################
+# Alacritty setup - A faster terminal emulator
+############################################################
+brew cask install alacritty
+mkdir -p ~/.config/alacritty/ # Create alacritty config folder
+ln -s ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 
-# Copy my tmux file to root
-#ln ~/dotfiles/tmux/tmux.conf.local ~/.tmux.conf.local
 
+############################################################
+# tmux - Cool kid's iterm
+############################################################
+brew install tmux
 ln -s -f ~/dotfiles/tmux.conf ~/.tmux.conf
 
-# zsh setup
-ln -s -f ~/dotfiles/zshrc ~/.zshrc
 
-# spacemacs setup
-#ln -s -f ~/dotfiles/spacemacs ~/.spacemacs
+############################################################
+# Neovim - An improved/hyped vim??
+############################################################
+brew install --HEAD neovim
+mkdir -p ~/.config/nvim/
+ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 
 
-# doom setup
-mkdir -p ~/.doom.d/
-ln ~/dotfiles/doom.d/config.el ~/.doom.d/config.el
-ln ~/dotfiles/doom.d/init.el ~/.doom.d/init.el
-ln ~/dotfiles/doom.d/packages.el ~/.doom.d/packages.el
-vim doom.d/packages.el
+############################################################
+# Vundle - Make vim vscode 
+############################################################
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim  # Neovim
+nvim +PluginInstall +qall
+
+
+############################################################
+# Emacs - Old man yells at editor
+############################################################
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@28
+
+
+############################################################
+# Vim - vim config similar to neovim
+############################################################
+mkdir -p ~/.vim/
+ln -s ~/dotfiles/vimrc ~/.vim/vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim # Vim
+cp -rvf ~/.config/nvim/bundle/Vundle.vim ~/.vim/bundle/Vundle.vim
+
+
+############################################################
+# ripgrep - Grep but only faster
+############################################################
+brew install ripgrep
+
+
+############################################################
+# DOOM - Vim inside emacs
+############################################################
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+# mkdir -p ~/.doom.d/
+# ln ~/dotfiles/doom.d/config.el ~/.doom.d/config.el
+# ln ~/dotfiles/doom.d/init.el ~/.doom.d/init.el
+# ln ~/dotfiles/doom.d/packages.el ~/.doom.d/packages.el
+# vim doom.d/packages.el
 

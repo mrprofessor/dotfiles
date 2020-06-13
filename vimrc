@@ -45,13 +45,6 @@ set guioptions=             " remove both side scrollbars from macvim
 set autoread
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" set leader key
-" Currently breaks float-term
-"let mapleader=" "
-"nnoremap <SPACE> <Nop>
-
-
-
 " PEP 8(python 3)
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -302,6 +295,9 @@ let g:gruvbox_contrast_dark='medium'
 let g:srcery_italic=1
 let g:srcery_bold=1
 colorscheme srcery
+
+
+" Colors settings that I don't use anymore
 
 " Color jellybeans
 "let g:jellybeans_use_term_italics = 1

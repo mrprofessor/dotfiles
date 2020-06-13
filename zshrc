@@ -50,6 +50,7 @@ ZSH_THEME="norm"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Aliases
+# Git aliases
 gituser() {
 	git config --global user.name && git config --global user.email
 }
@@ -163,10 +164,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+#if [ -f '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+#if [ -f '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/professor/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Removed iterm shell integration in favour of emacs
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

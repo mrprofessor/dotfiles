@@ -50,4 +50,25 @@
 ;
 ;Themes
 (package! srcery-theme)
+(package! poet-theme)
+
+
 ;; (package! go-mode)
+
+;; GO language // lsp is too buggy for me
+;; (package! go-mode)
+;; (autoload 'go-mode "go-mode" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+;;
+;; Disable doom themes
+;; (package! doom-themes :disable t)
+
+
+;;Fancy org-mode
+(package! org-fancy-priorities)
+
+;; ox-hugo
+(package! ox-hugo)
+
+;; org-bullets
+(package! org-bullets)
