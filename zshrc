@@ -37,6 +37,10 @@ eval "$(pyenv init -)"
 alias python='python3'
 alias py='python3'
 
+# Node js n
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -67,9 +71,9 @@ gitlines() {
 }
 
 # vim ==> nvim
-alias oldvim="vim"
 alias vim="nvim"
 alias vi="nvim"
+alias oldvim="vim"
 
 # brew/cargo install exa 
 # A modern replacement for ls.
@@ -173,8 +177,8 @@ source $ZSH/oh-my-zsh.sh
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # source ~/.iterm2_shell_integration.zsh
 
-export PATH="/usr/local/opt/node@10/bin:$PATH"
-export PATH="/usr/local/opt/node@10/bin:$PATH"
+# export PATH="/usr/local/opt/node@10/bin:$PATH"
+# export PATH="/usr/local/opt/node@10/bin:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"

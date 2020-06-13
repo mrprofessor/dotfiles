@@ -7,9 +7,9 @@
   cd ~/dotfiles
   bash setup.sh
   ```
-  
+
 ## Screenshots
 
 <kbd>
-  <img src="screenshots/tmux.png">  
+  <img src="screenshots/tmux.png">
 </kbd>

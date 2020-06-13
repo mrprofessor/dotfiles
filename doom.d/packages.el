@@ -66,9 +66,3 @@
 
 ;;Fancy org-mode
 (package! org-fancy-priorities)
-
-;; ox-hugo
-(package! ox-hugo)
-
-;; org-bullets
-(package! org-bullets)

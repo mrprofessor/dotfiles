@@ -1,6 +1,4 @@
 #!/bin/bash
-# Be advised
-# Never worked on first try
 # Prerequisite: xcode --select-install
 
 
@@ -8,6 +6,8 @@
 # Homebrew - Mac os package manager
 ############################################################
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+sudo chmod -R 755 /usr/local/share/zsh/site-functions
+sudo chmod -R 755 /usr/local/share/zsh
 
 
 ############################################################
@@ -15,6 +15,7 @@
 ############################################################
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -s -f ~/dotfiles/zshrc ~/.zshrc # Link zshrc
+source ~/.zshrc
 
 
 ############################################################
@@ -75,9 +76,7 @@ brew install ripgrep
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
 
-# mkdir -p ~/.doom.d/
-# ln ~/dotfiles/doom.d/config.el ~/.doom.d/config.el
-# ln ~/dotfiles/doom.d/init.el ~/.doom.d/init.el
-# ln ~/dotfiles/doom.d/packages.el ~/.doom.d/packages.el
-# vim doom.d/packages.el
-
+mkdir -p ~/.doom.d/
+ln -f ~/dotfiles/doom.d/config.el ~/.doom.d/config.el
+ln -f ~/dotfiles/doom.d/init.el ~/.doom.d/init.el
+ln -f ~/dotfiles/doom.d/packages.el ~/.doom.d/packages.el

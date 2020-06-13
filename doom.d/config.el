@@ -19,12 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
+(setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 20))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-solarized-dark)
 ;; (setq doom-theme 'doom-one-light)
 ;; (setq doom-theme 'doom-vibrant)
 ;; (load-theme 'wombat t)
@@ -108,16 +109,13 @@
   (org-add-link-type "glitch" #'make-glitch-link)
 
                                         ; Hide emphasis markers
-  (setq org-hide-emphasis-markers t)
-
-
-                                        ; Asterisks and dashes for bullet lists are fine, but having an actual circular bullet, is just nice:
+  (setq org-hide-emphasis-markers t)    ; Asterisks and dashes for bullet lists are fine, but having an actual circular bullet, is just nice:
   (font-lock-add-keywords 'org-mode
                           '(("^ +\\([-*]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  ;; (require 'org-bullets)
+  ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
   (setq org-agenda-skip-scheduled-if-done t
         org-priority-faces '((65 :foreground "#e45649")
@@ -125,6 +123,7 @@
                              (67 :foreground "#0098dd")))
 
   )
+
 ;; (let* ((variable-tuple (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
 ;;                              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
 ;;                              ((x-list-fonts "Verdana")         '(:font "Verdana"))
@@ -145,6 +144,8 @@
 ;;                           `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))))
 
 ;; Org fancy priorities
+
+
 (use-package! org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
   :config (setq org-fancy-priorities-list '("⚡" "⬆" "☕")))
@@ -167,3 +168,6 @@
 
 ;; Orgcss
 (setq org-html-htmlize-output-type 'css)
+
+;; Italics
+(add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
