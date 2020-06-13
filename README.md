@@ -7,9 +7,9 @@
   cd ~/dotfiles
   bash setup.sh
   ```
+  
+## Screenshots
 
-
-
-#### TODO
-
-  - Use GNU stow to manage dotfiles
+<kbd>
+  <img src="screenshots/tmux.png">  
+</kbd>
