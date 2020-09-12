@@ -33,6 +33,7 @@ alias ctags="`brew --prefix`/bin/ctags"
 # Setting PATH for Python 3
 # The original version is saved in .bash_profile.pysave
 eval "$(pyenv init -)"
+
 #export PATH
 alias python='python3'
 alias py='python3'
@@ -80,12 +81,20 @@ alias oldvim="vim"
 alias l="exa -l"
 
 # emacs ==> doom emacs
-alias emacs="emacs -nw"
+#alias emacs="emacs -nw"
+
+# kubectl
+alias k="kubectl"
 
 # Support Emacs
 if [[ $TERM = dumb ]]; then
     unset zle_bracketed_paste
 fi
+
+# Show battery percentage
+macBattery() {
+  pmset -g batt | grep -Eo '\d+%' | cut -d% -f-2
+}
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -183,3 +192,16 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# Rust path
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
+# Objectrocket stuff
+alias or-scratchpad='or-infra --kube-context infradev --infra-api-url https://ingress.infradev.scratchpad.objectrocket.cloud/infraapi/'
+alias or-leappad='or-infra --kube-context infrastg --infra-api-url https://ingress.infrastg.leappad.objectrocket.cloud/infraapi/'
+alias or-launchpad='or-infra --kube-context infraprd --infra-api-url https://ingress.infraprd.launchpad.objectrocket.cloud/infraapi/'
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+
+# aws cli
+export PATH=~/bin:$PATH

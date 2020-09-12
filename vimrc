@@ -101,11 +101,13 @@ Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'l04m33/vlime'
 Plugin 'kylef/apiblueprint.vim'
+Plugin 'jceb/vim-orgmode'
 
 " Colors
 Plugin 'phanviet/vim-monokai-pro'
@@ -117,9 +119,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'srcery-colors/srcery-vim'
+Plugin 'lifepillar/vim-solarized8'
 "Plugin 'dracula/vim'
 "Plugin 'rakr/vim-one'
-"Plugin 'joshdick/onedark.vim'
+Plugin 'joshdick/onedark.vim'
 "Plugin 'liuchengxu/space-vim-dark'
 "Plugin 'sjl/badwolf'
 "Plugin 'gruvbox-material/vim', {'as': 'gruvbox-material'}
@@ -166,13 +169,17 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='gruvbox'
-let g:airline_theme='srcery'
+"let g:airline_theme='srcery'
+let g:airline_theme='solarized'
 
 " Git stuff
 set diffopt+=vertical
 
 " Markdown
 let g:vim_markdown_folding_disabled = 1
+
+" Rust
+let g:rustfmt_autosave = 1
 
 " Ale linters
 " let g:ale_lint_on_save = 1
@@ -194,9 +201,6 @@ let g:ale_fixers = {
 let g:black_linelength = 80
 
 " Custom error signs
-" Less aggressive than the default '>>'
-" let g:ale_sign_error = '●' 
-"let g:ale_sign_error = '💩'
 let g:ale_sign_error = '🚨'
 
 
@@ -244,7 +248,6 @@ nmap <silent> <leader>o :!open %<CR>
 " Python syntax support!
 let python_highlight_all=1
 let g:pymode_python = 'python3'
-"let g:pymode_python = 'disable'
 let g:pymode_lint = 0 " Disable pymode_lint
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_message = 1
@@ -286,16 +289,21 @@ noremap <Right> <Nop>
 "===========================================================
 
 " Color gruvvox "
-let g:gruvbox_italic=1
-colo gruvbox
-set background=dark    " Setting dark mode
-let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_italic=0
+"colo gruvbox
+"set background=dark    " Setting dark mode
+"let g:gruvbox_contrast_dark='medium'
+
+" Color solarized(dark)
+set termguicolors     " enable true colors support
+set background=dark
+colorscheme solarized8_flat
+let g:solarized_italic=1
 
 " Color srcery-vim
-let g:srcery_italic=1
-let g:srcery_bold=1
-colorscheme srcery
-
+"let g:srcery_italic=1
+"let g:srcery_bold=1
+"colorscheme srcery
 
 " Colors settings that I don't use anymore
 

@@ -19,16 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 20))
+(setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-solarized-dark)
-;; (setq doom-theme 'doom-one-light)
-;; (setq doom-theme 'doom-vibrant)
-;; (load-theme 'wombat t)
+(setq doom-theme 'doom-gruvbox)
 ;; (load-theme 'srcery t)
 ;; (load-theme 'poet t)
 
@@ -124,50 +121,135 @@
 
   )
 
-;; (let* ((variable-tuple (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-;;                              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-;;                              ((x-list-fonts "Verdana")         '(:font "Verdana"))
-;;                              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-;;                              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-;;        (base-font-color     (face-foreground 'default nil 'default))
-;;        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-
-;;   (custom-theme-set-faces 'user
-;;                           `(org-level-8 ((t (,@headline ,@variable-tuple))))
-;;                           `(org-level-7 ((t (,@headline ,@variable-tuple))))
-;;                           `(org-level-6 ((t (,@headline ,@variable-tuple))))
-;;                           `(org-level-5 ((t (,@headline ,@variable-tuple))))
-;;                           `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-;;                           `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-;;                           `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-;;                           `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-;;                           `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))))
-
 ;; Org fancy priorities
-
-
 (use-package! org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
   :config (setq org-fancy-priorities-list '("⚡" "⬆" "☕")))
 
-;; Org-roam
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org Roam = Start
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq org-roam-directory "~/dev/notes/org-roam")
 (after! org-roam
-  (setq org-roam-directory "~/org-roam")
-  (add-hook 'after-init-hook 'org-roam-mode)
-  )
+  (map! :leader
+        :prefix "n"
+        :desc "org-roam" "l" #'org-roam
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+        :desc "org-roam-find-file" "f" #'org-roam-find-file
+        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-capture" "c" #'org-roam-capture))
 
-;; Poet theme specific
-;; (add-hook 'text-mode-hook
-;;            (lambda ()
-;;              (variable-pitch-mode 1)))
+(after! org-roam
+  (setq org-roam-ref-capture-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "websites/${slug}"
+           :head "#+TITLE: ${title}
+    #+ROAM_KEY: ${ref}
+    - source :: ${ref}"
+           :unnarrowed t))))
 
-;; (add-to-list
-;;   'default-frame-alist'(ns-transparent-titlebar . t))
-;; (add-to-list
-;;   'default-frame-alist'(ns-appearance . light))
+;; Refactor to doom style
+(use-package org-journal
+  :bind
+  ("C-c n j" . org-journal-new-entry)
+  :custom
+  (org-journal-dir "~/dev/notes/org-roam/")
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-date-format "%A, %d %B %Y"))
+(setq org-journal-enable-agenda-integration t)
+
+;; Refactor to doom style
+(use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory "~/dev/notes/org-roam/"))
+
+;; Graphviz + org-roam
+(setq org-roam-graph-executable "/usr/local/bin/dot")
+
+;; Org-roam-export
+(defun my/org-roam--backlinks-list-with-content (file)
+  (with-temp-buffer
+    (if-let* ((backlinks (org-roam--get-backlinks file))
+              (grouped-backlinks (--group-by (nth 0 it) backlinks)))
+        (progn
+          (insert (format "\n\n* %d Backlinks\n"
+                          (length backlinks)))
+          (dolist (group grouped-backlinks)
+            (let ((file-from (car group))
+                  (bls (cdr group)))
+              (insert (format "** [[file:%s][%s]]\n"
+                              file-from
+                              (org-roam--get-title-or-slug file-from)))
+              (dolist (backlink bls)
+                (pcase-let ((`(,file-from _ ,props) backlink))
+                  (insert (s-trim (s-replace "\n" " " (plist-get props :content))))
+                  (insert "\n\n")))))))
+    (buffer-string)))
+
+(defun my/org-export-preprocessor (backend)
+  (let ((links (my/org-roam--backlinks-list-with-content (buffer-file-name))))
+    (unless (string= links "")
+      (save-excursion
+        (goto-char (point-max))
+        (insert (concat "\n* Backlinks\n") links)))))
+
+(add-hook 'org-export-before-processing-hook 'my/org-export-preprocessor)
+
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 2345
+        org-roam-server-export-inline-images t
+        org-roam-server-authenticate nil
+        org-roam-server-label-truncate t
+        org-roam-server-label-truncate-length 60
+        org-roam-server-label-wrap-length 20))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org Roam = END
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Orgcss
 (setq org-html-htmlize-output-type 'css)
 
 ;; Italics
 (add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Whitespace mode = BEGIN
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (global-whitespace-mode)
+;; (setq whitespace-style '(face tabs tab-mark trailing))
+;; (custom-set-faces
+;;  '(whitespace-tab ((t (:foreground "#636363")))))
+
+;; (setq whitespace-display-mappings
+;;   '((tab-mark 9 [124 9] [92 9])))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Whitespace mode = END
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Beacon mode = BEGIN
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (beacon-mode 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Beacon mode = END
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

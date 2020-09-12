@@ -66,3 +66,9 @@
 
 ;;Fancy org-mode
 (package! org-fancy-priorities)
+;; (package! org-journal)
+(package! org-roam-server)
+
+
+;; Beacon (https://github.com/Malabarba/beacon)
+(package! beacon)

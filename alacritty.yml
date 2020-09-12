@@ -139,21 +139,30 @@ scrolling:
   # Scroll to the bottom when new text is written to the terminal.
   #auto_scroll: false
 
-
+  # ref: https://gist.github.com/sts10/df620672662fe4c6f03ac296a02b8e72
 key_bindings:
   # (macOS only)
-  - { key: Key0,   mods: Command,         action: ResetFontSize    }
-  - { key: Equals, mods: Command,         action: IncreaseFontSize }
-  - { key: Add,    mods: Command,         action: IncreaseFontSize }
-  - { key: Minus,  mods: Command,         action: DecreaseFontSize }
-  - { key: K,      mods: Command,         action: ClearHistory     }
-  - { key: K,      mods: Command,         chars: "\x0c"            }
-  - { key: V,      mods: Command,         action: Paste            }
-  - { key: C,      mods: Command,         action: Copy             }
-  - { key: H,      mods: Command,         action: Hide             }
-  - { key: Q,      mods: Command,         action: Quit             }
-  - { key: W,      mods: Command,         action: Quit             }
-  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+   - { key: Key0,   mods: Command,         action: ResetFontSize    }
+   - { key: Equals, mods: Command,         action: IncreaseFontSize }
+   - { key: Add,    mods: Command,         action: IncreaseFontSize }
+   - { key: Minus,  mods: Command,         action: DecreaseFontSize }
+   - { key: K,      mods: Command,         action: ClearHistory     }
+   - { key: K,      mods: Command,         chars: "\x0c"            }
+   - { key: V,      mods: Command,         action: Paste            }
+   - { key: C,      mods: Command,         action: Copy             }
+   - { key: H,      mods: Command,         action: Hide             }
+   - { key: Q,      mods: Command,         action: Quit             }
+   - { key: W,      mods: Command,         action: Quit             }
+   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+   - { key: Back,    mods: Command,   chars: "\x15"                 }
+   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"              }
+   - { key: Left,     mods: Command,   chars: "\x01"              }
+   - { key: Right,     mods: Command,   chars: "\x05"              }
+   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
+   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
+   - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                   }
+
+  # - { key: delete,                  chars: "\x1b[3~"               }
 
   #- { key: Paste,                   action: Paste                            }
   #- { key: Copy,                    action: Copy                             }
@@ -262,31 +271,66 @@ key_bindings:
   #- { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   #- { key: NumpadEnter,             chars: "\n"                              }
 
-# Colors (Srcery)
+# # Colors (Srcery)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x1c1b19'
+#     foreground: '0xfce8c3'
+
+#   # Normal colors
+#   normal:
+#     black:   '0x1c1b19'
+#     red:     '0xef2f27'
+#     green:   '0x519f50'
+#     yellow:  '0xfbb829'
+#     blue:    '0x2c78bf'
+#     magenta: '0xe02c6d'
+#     cyan:    '0x0aaeb3'
+#     white:   '0xd0bfa1'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x918175'
+#     red:     '0xf75341'
+#     green:   '0x98bc37'
+#     yellow:  '0xfed06e'
+#     blue:    '0x68a8e4'
+#     magenta: '0xff5c8f'
+#     cyan:    '0x53fde9'
+#     white:   '0xfce8c3'
+
+# Colors (Solarized Dark)
 colors:
   # Default colors
   primary:
-    background: '0x1c1b19'
-    foreground: '0xfce8c3'
+    background: '0x002b36'
+    foreground: '0x839496'
 
   # Normal colors
   normal:
-    black:   '0x1c1b19'
-    red:     '0xef2f27'
-    green:   '0x519f50'
-    yellow:  '0xfbb829'
-    blue:    '0x2c78bf'
-    magenta: '0xe02c6d'
-    cyan:    '0x0aaeb3'
-    white:   '0xd0bfa1'
+    black:   '0x073642'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0xd33682'
+    cyan:    '0x2aa198'
+    white:   '0xeee8d5'
 
   # Bright colors
   bright:
-    black:   '0x918175'
-    red:     '0xf75341'
-    green:   '0x98bc37'
-    yellow:  '0xfed06e'
-    blue:    '0x68a8e4'
-    magenta: '0xff5c8f'
-    cyan:    '0x53fde9'
-    white:   '0xfce8c3'
+    black:   '0x002b36'
+    red:     '0xcb4b16'
+    green:   '0x586e75'
+    yellow:  '0x657b83'
+    blue:    '0x839496'
+    magenta: '0x6c71c4'
+    cyan:    '0x93a1a1'
+    white:   '0xfdf6e3'
+
+# Start tmux by default
+# shell:
+#     program: /usr/local/bin/tmux
+#     args:
+#      - -u # force UTF-8 in tmux
