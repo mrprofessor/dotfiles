@@ -19,13 +19,15 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
+;; (setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
 (setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-old-hope)
 ;; (load-theme 'srcery t)
 ;; (load-theme 'poet t)
 
@@ -213,9 +215,9 @@
         org-roam-server-port 2345
         org-roam-server-export-inline-images t
         org-roam-server-authenticate nil
-        org-roam-server-label-truncate t
-        org-roam-server-label-truncate-length 60
-        org-roam-server-label-wrap-length 20))
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org Roam = END

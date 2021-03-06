@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Prerequisite:
-xcode --select-install
+#xcode --select-install
 
 ############################################################
 # Homebrew - Mac os package manager

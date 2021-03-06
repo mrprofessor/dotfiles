@@ -10,8 +10,9 @@ alias loadnvm_completion='[ -s "$NVM_DIR/bash_completion" ] && . ""$NVM_DIR/bash
 
 export LC_ALL=en_US.UTF-8
 
+user_name=$(id -un)
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/professor/.oh-my-zsh"
+export ZSH="/Users/${user_name}/.oh-my-zsh"
 
 # emacs
 #export PATH=$PATH:/usr/local/sbin
@@ -73,18 +74,15 @@ gitlines() {
 
 # vim ==> nvim
 alias vim="nvim"
-alias vi="nvim"
+#alias vi="nvim"
 alias oldvim="vim"
 
 # brew/cargo install exa 
 # A modern replacement for ls.
 alias l="exa -l"
 
-# emacs ==> doom emacs
-#alias emacs="emacs -nw"
-
 # kubectl
-alias k="kubectl"
+alias k="kubectl $@"
 
 # Support Emacs
 if [[ $TERM = dumb ]]; then
@@ -205,3 +203,7 @@ export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 
 # aws cli
 export PATH=~/bin:$PATH
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

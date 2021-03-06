@@ -163,9 +163,9 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 "===========================================================
 
 " Airline stuff
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='onehalfdark'
 "let g:airline_theme='gruvbox'
