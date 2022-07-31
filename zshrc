@@ -33,15 +33,20 @@ alias ctags="`brew --prefix`/bin/ctags"
 
 # Setting PATH for Python 3
 # The original version is saved in .bash_profile.pysave
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
-#export PATH
+# export PATH
 alias python='python3'
 alias py='python3'
 
+# Internet of things
+alias findiot='ls /dev/tty.*'
+
 # Node js n
-export N_PREFIX=$HOME/.n
-export PATH=$N_PREFIX/bin:$PATH
+#export N_PREFIX=$HOME/.n
+#export PATH=$N_PREFIX/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -196,10 +201,24 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Objectrocket stuff
-alias or-scratchpad='or-infra --kube-context infradev --infra-api-url https://ingress.infradev.scratchpad.objectrocket.cloud/infraapi/'
-alias or-leappad='or-infra --kube-context infrastg --infra-api-url https://ingress.infrastg.leappad.objectrocket.cloud/infraapi/'
-alias or-launchpad='or-infra --kube-context infraprd --infra-api-url https://ingress.infraprd.launchpad.objectrocket.cloud/infraapi/'
+alias or-scratchpad='or-infra --kube-context infradev --infra-api-url https://infraapi/.scratchpad.objectrocket.cloud/'
+alias or-leappad='or-infra --kube-context infrastg --infra-api-url https://infraapi.leappad.objectrocket.cloud/'
+alias or-launchpad='or-infra --kube-context infraprd --infra-api-url https://infraapi.launchpad.objectrocket.cloud/'
 export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+
+# Put this in ~/.bash_aliases or ~/.bash_profile
+function kssh(){
+  if [ -n "${KLUSTER}" ]; then
+     ssh -F ${HOME}/.ssh/config-${KLUSTER} ${1}
+  else
+    if [ -z "${1}" -o -z "${2}" ]; then
+      echo 'to use either export KLUSTER=cluster-name and then kssh host'
+      echo 'or use kssh cluster-name host'
+    else
+      ssh -F ${HOME}/.ssh/config-${1} ${2}
+    fi
+  fi
+}
 
 # aws cli
 export PATH=~/bin:$PATH
@@ -207,3 +226,4 @@ export PATH=~/bin:$PATH
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+export PATH="/usr/local/opt/go@1.13/bin:$PATH"

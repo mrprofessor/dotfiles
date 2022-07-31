@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
 (setq doom-font (font-spec :family "OperatorMono Nerd Font" :size 18))
+;; (setq doom-font (font-spec :family "Cascadia code PL" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -33,7 +33,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+;(setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -180,44 +180,44 @@
 (setq org-roam-graph-executable "/usr/local/bin/dot")
 
 ;; Org-roam-export
-(defun my/org-roam--backlinks-list-with-content (file)
-  (with-temp-buffer
-    (if-let* ((backlinks (org-roam--get-backlinks file))
-              (grouped-backlinks (--group-by (nth 0 it) backlinks)))
-        (progn
-          (insert (format "\n\n* %d Backlinks\n"
-                          (length backlinks)))
-          (dolist (group grouped-backlinks)
-            (let ((file-from (car group))
-                  (bls (cdr group)))
-              (insert (format "** [[file:%s][%s]]\n"
-                              file-from
-                              (org-roam--get-title-or-slug file-from)))
-              (dolist (backlink bls)
-                (pcase-let ((`(,file-from _ ,props) backlink))
-                  (insert (s-trim (s-replace "\n" " " (plist-get props :content))))
-                  (insert "\n\n")))))))
-    (buffer-string)))
+;; (defun my/org-roam--backlinks-list-with-content (file)
+;;   (with-temp-buffer
+;;     (if-let* ((backlinks (org-roam--get-backlinks file))
+;;               (grouped-backlinks (--group-by (nth 0 it) backlinks)))
+;;         (progn
+;;           (insert (format "\n\n* %d Backlinks\n"
+;;                           (length backlinks)))
+;;           (dolist (group grouped-backlinks)
+;;             (let ((file-from (car group))
+;;                   (bls (cdr group)))
+;;               (insert (format "** [[file:%s][%s]]\n"
+;;                               file-from
+;;                               (org-roam--get-title-or-slug file-from)))
+;;               (dolist (backlink bls)
+;;                 (pcase-let ((`(,file-from _ ,props) backlink))
+;;                   (insert (s-trim (s-replace "\n" " " (plist-get props :content))))
+;;                   (insert "\n\n")))))))
+;;     (buffer-string)))
 
-(defun my/org-export-preprocessor (backend)
-  (let ((links (my/org-roam--backlinks-list-with-content (buffer-file-name))))
-    (unless (string= links "")
-      (save-excursion
-        (goto-char (point-max))
-        (insert (concat "\n* Backlinks\n") links)))))
+;; (defun my/org-export-preprocessor (backend)
+;;   (let ((links (my/org-roam--backlinks-list-with-content (buffer-file-name))))
+;;     (unless (string= links "")
+;;       (save-excursion
+;;         (goto-char (point-max))
+;;         (insert (concat "\n* Backlinks\n") links)))))
 
-(add-hook 'org-export-before-processing-hook 'my/org-export-preprocessor)
+;; (add-hook 'org-export-before-processing-hook 'my/org-export-preprocessor)
 
-(use-package org-roam-server
-  :ensure t
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 2345
-        org-roam-server-export-inline-images t
-        org-roam-server-authenticate nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+;(use-package org-roam-server
+  ;:ensure t
+  ;:config
+  ;(setq org-roam-server-host "127.0.0.1"
+        ;org-roam-server-port 2345
+        ;org-roam-server-export-inline-images t
+        ;org-roam-server-authenticate nil
+        ;org-roam-server-network-label-truncate t
+        ;org-roam-server-network-label-truncate-length 60
+        ;org-roam-server-network-label-wrap-length 20))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org Roam = END
@@ -228,6 +228,20 @@
 
 ;; Italics
 (add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
+
+
+;; Escape special characters in org mode
+;(defadvice! org-md-plain-text-unicode-a (orig-fn text info)
+  ;"Locally rebind `org-html-special-string-regexps'"
+  ;:around #'org-md-plain-text
+  ;(let ((org-html-special-string-regexps
+         ;'(("\\\\-" . "-")
+           ;("---\\([^-]\\|$\\)" . "—\\1")
+           ;("--\\([^-]\\|$\\)" . "–\\1")
+           ;("\\.\\.\\." . "…")
+           ;("->" . "→")
+           ;("<-" . "←"))))
+    ;(funcall orig-fn text (plist-put info :with-smart-quotes nil))))
 
 
 
@@ -255,3 +269,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Beacon mode = END
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq url-user-agent "User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7\n")
+
+;; (url-user-agent)

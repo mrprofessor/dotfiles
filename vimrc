@@ -296,14 +296,14 @@ noremap <Right> <Nop>
 
 " Color solarized(dark)
 set termguicolors     " enable true colors support
-set background=dark
-colorscheme solarized8_flat
-let g:solarized_italic=1
+"set background=dark
+"colorscheme solarized8_flat
+"let g:solarized_italic=1
 
 " Color srcery-vim
-"let g:srcery_italic=1
-"let g:srcery_bold=1
-"colorscheme srcery
+let g:srcery_italic=1
+let g:srcery_bold=1
+colorscheme srcery
 
 " Colors settings that I don't use anymore
 
