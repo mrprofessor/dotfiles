@@ -43,6 +43,7 @@ set cursorline
 set guioptions=             " remove both side scrollbars from macvim 
 " Ture color for neovim
 set autoread
+set encoding=UTF-8          " Set Encoding(not needed for neovim)
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " PEP 8(python 3)
@@ -127,9 +128,6 @@ Plugin 'joshdick/onedark.vim'
 "Plugin 'sjl/badwolf'
 "Plugin 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 
-" Devicons
-Plugin 'ryanoasis/vim-devicons'
-
 " Search and file browser
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -154,6 +152,9 @@ Plugin 'junegunn/goyo.vim'
 
 " Tags
 Plugin 'majutsushi/tagbar'
+
+" Devicons
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on   " allows auto-indenting depending on file type

@@ -32,14 +32,13 @@ export PATH=$PATH:$GOPATH/bin
 alias ctags="`brew --prefix`/bin/ctags"
 
 # Setting PATH for Python 3
-# The original version is saved in .bash_profile.pysave
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # export PATH
-alias python='python3'
-alias py='python3'
+#alias python='python2'
+#alias py='python2'
 
 # Internet of things
 alias findiot='ls /dev/tty.*'
@@ -227,3 +226,4 @@ export PATH=~/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="/usr/local/opt/go@1.13/bin:$PATH"
+export PATH="/opt/homebrew/opt/mongodb-community@5.0/bin:$PATH"
