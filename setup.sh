@@ -9,6 +9,30 @@
 # Homebrew - Mac os package manager
 ############################################################
 #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/rudra.kar/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+############################################################
+# Zsh - My goto shell
+############################################################
+brew install zsh
+
+
+############################################################
+# Pyenv
+############################################################
+brew install pyenv
+
+
+############################################################
+# Starship - Cool prompt
+############################################################
+brew install starship
+mkdir -p ~/.config # Create config folder
+ln -s -f ~/dotfiles/starship.toml ~/.config/starship.toml # Link starship.toml 
+ln -s -f ~/dotfiles/zshrc ~/.zshrc # Link zshrc
+source ~/.zshrc
 
 
 ############################################################
@@ -42,7 +66,7 @@ nvim +PluginInstall +qall
 
 
 ############################################################
-# Vim - vim config similar to neovim
+# Vim - Use Neovim config
 ############################################################
 mkdir -p ~/.vim/
 ln -s ~/dotfiles/vimrc ~/.vim/vimrc

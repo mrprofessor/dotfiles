@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Starship
+eval "$(starship init zsh)"
+
 export NVM_DIR="$HOME/.nvm"
 # Removing to speedup zsh initialization
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -12,12 +15,10 @@ export LC_ALL=en_US.UTF-8
 
 user_name=$(id -un)
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/${user_name}/.oh-my-zsh"
+#export ZSH="/Users/${user_name}/.oh-my-zsh"
 
-# emacs
-#export PATH=$PATH:/usr/local/sbin
-#export PATH=/usr/local/Cellar/emacs-plus/26.3:$PATH
-export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
+# Emacs
+export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
 
 # Ruby specific
 export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -35,10 +36,6 @@ alias ctags="`brew --prefix`/bin/ctags"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-# export PATH
-#alias python='python2'
-#alias py='python2'
 
 # Internet of things
 alias findiot='ls /dev/tty.*'
@@ -147,7 +144,7 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
