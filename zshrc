@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Starship
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 # Removing to speedup zsh initialization
@@ -15,7 +15,7 @@ export LC_ALL=en_US.UTF-8
 
 user_name=$(id -un)
 # Path to your oh-my-zsh installation.
-#export ZSH="/Users/${user_name}/.oh-my-zsh"
+export ZSH="/Users/${user_name}/.oh-my-zsh"
 
 # Emacs
 export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"

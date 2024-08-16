@@ -3,12 +3,12 @@
 # An attempt at installing some basic packages
 
 # Prerequisite:
-#xcode --select-install
+xcode --select-install
 
 ############################################################
 # Homebrew - Mac os package manager
 ############################################################
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/rudra.kar/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -26,13 +26,12 @@ brew install pyenv
 
 
 ############################################################
-# Starship - Cool prompt
+# Wezterm - Nice term emulator
 ############################################################
-brew install starship
-mkdir -p ~/.config # Create config folder
-ln -s -f ~/dotfiles/starship.toml ~/.config/starship.toml # Link starship.toml 
-ln -s -f ~/dotfiles/zshrc ~/.zshrc # Link zshrc
-source ~/.zshrc
+brew install wezterm
+mkdir -p ~/.config/wezterm/
+ln -s -f ~/dotfiles/wezterm.lua ~/.config/wezterm/wezterm.lua
+
 
 
 ############################################################

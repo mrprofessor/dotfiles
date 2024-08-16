@@ -20,31 +20,32 @@
 "                         ███████████████████████████
 "
 "
-" This config works for both vim and nvim.
-set nocompatible            " Disable compatibility to old-time vi
-set showmatch               " Show matching brackets.
-set ignorecase              " Do case insensitive matching
-set mouse=v                 " middle-click paste with mouse
-set hlsearch                " highlight search results
-set tabstop=2               " number of columns occupied by a tab character
-set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
-set shiftwidth=2            " width for autoindents
-set autoindent              " indent a new line the same amount as the line just typed
-set number                  " add line numbers
-set wildmode=longest,list   " get bash-like tab completions
-set cc=80                   " set an 80 column border for good coding style
-set clipboard=unnamed       " This makes yanking work with default Terminal
-set shell=/bin/zsh          " set default shell to zsh
-set splitbelow              " default horizontal split below
-set splitright              " default vertical split right
+" This config supports both vim and neovim.
+set nocompatible                      " Disable compatibility to old-time vi
+set showmatch                         " Show matching brackets.
+set ignorecase                        " Do case insensitive matching
+set mouse=v                           " middle-click paste with mouse
+set hlsearch                          " highlight search results
+set tabstop=2                         " number of columns occupied by a tab character
+set softtabstop=2                     " see multiple spaces as tabstops so <BS> does the right thing
+set expandtab                         " converts tabs to white space
+set shiftwidth=2                      " width for autoindents
+set autoindent                        " indent a new line the same amount as the line just typed
+set number                            " add line numbers
+set wildmode=longest,list             " get bash-like tab completions
+set cc=80                             " set an 80 column border for good coding style
+set clipboard=unnamed                 " This makes yanking work with default Terminal
+set shell=/bin/zsh                    " set default shell to zsh
+set splitbelow                        " default horizontal split below
+set splitright                        " default vertical split right
 set cursorline
-" set mouse=a               " mouse support on
-set guioptions=             " remove both side scrollbars from macvim 
+" set mouse=a                         " mouse support on
+set guioptions=                       " remove both side scrollbars from macvim 
 " Ture color for neovim
 set autoread
-set encoding=UTF-8          " Set Encoding(not needed for neovim)
+set encoding=UTF-8                    " Set Encoding(not needed for neovim)
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+hi Normal guibg=NONE ctermbg=NONE     " Transparent vim
 
 " PEP 8(python 3)
 au BufNewFile,BufRead *.py
@@ -109,6 +110,8 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'l04m33/vlime'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'jceb/vim-orgmode'
+Plugin 'kaarmu/typst.vim'
+Plugin 'chomosuke/typst-preview.nvim'
 
 " Colors
 Plugin 'phanviet/vim-monokai-pro'
@@ -297,46 +300,13 @@ noremap <Right> <Nop>
 
 " Color solarized(dark)
 set termguicolors     " enable true colors support
-"set background=dark
-"colorscheme solarized8_flat
-"let g:solarized_italic=1
-
-" Color srcery-vim
-let g:srcery_italic=1
-let g:srcery_bold=1
-colorscheme srcery
-
-" Colors settings that I don't use anymore
-
-" Color jellybeans
-"let g:jellybeans_use_term_italics = 1
-"colorscheme jellybeans
-
-" space-vim-dark
-"colo space-vim-dark
-"set termguicolors
-"hi LineNr ctermbg=NONE guibg=NONE
-"hi Comment cterm=italic
-" Python specific
-"hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
-"   Range:   233 (darkest) ~ 238 (lightest)
-"   Default: 235
-"let g:space_vim_dark_background = 234
-
-" /Favourites "
-
- "Color onedark "
-"colo onedark
-"let g:onedark_terminal_italics=1
-
-"...
-"set termguicolors     " enable true colors support
-"let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of them
-"colorscheme ayu
-"
+set background=dark
+colorscheme solarized8_high
+let g:solarized_bold=1
+let g:solarized_italic=1
 
 "===========================================================
 " END COLORS
 "===========================================================
+
+hi Normal guibg=NONE ctermbg=NONE "Transparent Vim
