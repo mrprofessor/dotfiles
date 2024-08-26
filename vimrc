@@ -79,7 +79,7 @@ call vundle#begin('~/.config/nvim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'scrooloose/nerdcommenter'
 
@@ -301,7 +301,7 @@ noremap <Right> <Nop>
 " Color solarized(dark)
 set termguicolors     " enable true colors support
 set background=dark
-colorscheme solarized8_high
+colorscheme srcery
 let g:solarized_bold=1
 let g:solarized_italic=1
 
