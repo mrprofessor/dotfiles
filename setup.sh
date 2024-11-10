@@ -83,3 +83,5 @@ brew install ripgrep
 # Cat - But with wings
 ############################################################
 brew install bat
+
+brew install mpv # For Emacs multimedia

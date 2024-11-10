@@ -67,7 +67,6 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <leader>s :set invspell<CR>
 
 
-
 "===========================================================
 " BEGIN  PLUGINS
 "===========================================================
@@ -79,7 +78,6 @@ call vundle#begin('~/.config/nvim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'airblade/vim-gitgutter'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'scrooloose/nerdcommenter'
 
@@ -95,8 +93,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'ambv/black'
 Plugin 'heavenshell/vim-pydocstring'
-"Plugin 'vim-syntastic/syntastic'
-"Plugin 'lucapette/vim-textobj-underscore'
+Plugin 'vim-airline/vim-airline'
 
 " Languages
 Plugin 'mxw/vim-jsx'
@@ -114,44 +111,23 @@ Plugin 'kaarmu/typst.vim'
 Plugin 'chomosuke/typst-preview.nvim'
 
 " Colors
-Plugin 'phanviet/vim-monokai-pro'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'morhetz/gruvbox'
-Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'srcery-colors/srcery-vim'
-Plugin 'lifepillar/vim-solarized8'
-"Plugin 'dracula/vim'
-"Plugin 'rakr/vim-one'
-Plugin 'joshdick/onedark.vim'
-"Plugin 'liuchengxu/space-vim-dark'
-"Plugin 'sjl/badwolf'
-"Plugin 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 
 " Search and file browser
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'takac/vim-hardtime'
 
 " Auto completion
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plugin 'zchee/deoplete-jedi'
-Plugin 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
-" vim8 specific
+" vim8/neovim specific
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 
 " Float baby float
 Plugin 'voldikss/vim-floaterm'
 Plugin 'liuchengxu/vim-clap'
-
-" Distraction free vim
-Plugin 'junegunn/goyo.vim'
 
 " Tags
 Plugin 'majutsushi/tagbar'
@@ -167,14 +143,7 @@ filetype plugin indent on   " allows auto-indenting depending on file type
 "===========================================================
 
 " Airline stuff
-"let g:airline#extensions#tabline#enabled = 0
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='onehalfdark'
-"let g:airline_theme='gruvbox'
-"let g:airline_theme='srcery'
-let g:airline_theme='solarized'
 
 " Git stuff
 set diffopt+=vertical
@@ -190,7 +159,8 @@ let g:rustfmt_autosave = 1
 let g:black_linelength = 80
 let g:ale_linters = {
   \ 'python': ['flake8'],
-  \ 'javascript': ['prettier', 'eslint']
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'haskell': ['hls']
   \}
 
 
@@ -201,8 +171,6 @@ let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'javascript': ['prettier', 'eslint']
   \ }
-
-let g:black_linelength = 80
 
 " Custom error signs
 let g:ale_sign_error = '🚨'
@@ -218,7 +186,7 @@ let g:deoplete#enable_at_startup = 1
 
 " Map keys
 nmap <leader>l :nohl<CR>
-nmap <leader>s :GitBlame<CR>
+nmap <leader>v :GitBlame<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <F5> :10split term://zsh<CR>
@@ -284,19 +252,9 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 
-" --------------------- Vim hardtime
-"let g:hardtime_default_on = 1
-
-
 "===========================================================
 " BEGIN COLORS
 "===========================================================
-
-" Color gruvvox "
-"let g:gruvbox_italic=0
-"colo gruvbox
-"set background=dark    " Setting dark mode
-"let g:gruvbox_contrast_dark='medium'
 
 " Color solarized(dark)
 set termguicolors     " enable true colors support
@@ -305,8 +263,10 @@ colorscheme srcery
 let g:solarized_bold=1
 let g:solarized_italic=1
 
+" Transparent Vim  
+hi Normal guibg=NONE ctermbg=NONE "Transparent Vim
+
 "===========================================================
 " END COLORS
 "===========================================================
 
-hi Normal guibg=NONE ctermbg=NONE "Transparent Vim

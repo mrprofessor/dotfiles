@@ -17,10 +17,11 @@ config.color_scheme = 'Sakura'
 -- config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- Font configuration
+-- config.font = wezterm.font 'Iosevka'
 config.font = wezterm.font 'Cascadia Code NF'
 config.freetype_load_target = 'Light'
 config.freetype_render_target = 'HorizontalLcd'
-config.font_size = 16.0
+config.font_size = 17.0
 
 -- Remove the title bar from the window
 config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS
@@ -29,7 +30,7 @@ config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS
 native_macos_fullscreen_mode = true
 
 -- Slightly transparent and blurred background
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.85
 config.macos_window_background_blur = 30
 
 -- Don't hide cursor when typing
