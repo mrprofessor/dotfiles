@@ -33,6 +33,10 @@ mkdir -p ~/.config/wezterm/
 ln -s -f ~/dotfiles/wezterm.lua ~/.config/wezterm/wezterm.lua
 
 
+# Ghostty - Hashimoto San's pet project
+############################################################
+mkdir -p ~/.config/ghostty/
+ln -s -f ~/dotfiles/ghostty.toml ~/.config/ghostty/config.toml
 
 ############################################################
 # Oh-my-zsh - A better shell

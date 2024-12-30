@@ -1,0 +1,32 @@
+# Shell
+command = /opt/homebrew/bin/zsh 
+shell-integration = zsh
+
+# Appearance
+# background-opacity = .8
+theme = Aardvark Blue
+
+font-size = 16
+font-family = "Cascadia Code NF"
+
+
+# Mac OS 
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+macos-icon-frame = beige
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+
+# Keybinds
+keybind = super+f=write_screen_file:open
+
+# Misc
+mouse-hide-while-typing = false
+window-colorspace = "display-p3"
+unfocused-split-opacity = 1

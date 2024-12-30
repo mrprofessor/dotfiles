@@ -258,12 +258,10 @@ noremap <Right> <Nop>
 
 " Color solarized(dark)
 set termguicolors     " enable true colors support
-set background=dark
 colorscheme srcery
-let g:solarized_bold=1
-let g:solarized_italic=1
 
 " Transparent Vim  
+syntax on
 hi Normal guibg=NONE ctermbg=NONE "Transparent Vim
 
 "===========================================================

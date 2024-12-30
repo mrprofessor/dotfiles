@@ -1,5 +1,5 @@
-# If you come from bash, you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
@@ -12,9 +12,10 @@ export LANG=en_US.UTF-8
 
 # Oh-My-Zsh setup
 user_name=$(id -un)
-export ZSH="/Users/${user_name}/.oh-my-zsh"
 ZSH_THEME="norm"
 plugins=(git)
+export ZSH="/Users/${user_name}/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
 # Emacs path
 export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
@@ -46,8 +47,8 @@ export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Aliases
-alias vim="nvim"
-alias oldvim="vim"
+# alias vim="nvim"
+# alias oldvim="vim"
 alias l="exa -l"
 alias k="kubectl $@"
 alias ctags="`brew --prefix`/bin/ctags"

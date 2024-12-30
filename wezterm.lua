@@ -10,11 +10,7 @@ local config = wezterm.config_builder()
 -- Overall Style
 -------------------------------------------------------------------------------
 
---config.color_scheme = 'Catppuccin Moch'
 config.color_scheme = 'Sakura'
-
--- Remove all padding
--- config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- Font configuration
 -- config.font = wezterm.font 'Iosevka'
@@ -24,7 +20,7 @@ config.freetype_render_target = 'HorizontalLcd'
 config.font_size = 17.0
 
 -- Remove the title bar from the window
-config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS
+config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS | RESIZE
 
 -- Enable native macOS fullscreen mode
 native_macos_fullscreen_mode = true
@@ -43,16 +39,7 @@ config.default_workspace = "home"
 -------------------------------------------------------------------------------
 
 -- Customize tab bar style
-config.use_fancy_tab_bar = false
-
-wezterm.on('update-right-status', function(window, pane)
-    local icon = utf8.char(0x2699,0xFE0F)
-    -- local icon = wezterm.nerdfonts.fa_bars_progress
-    window:set_right_status(wezterm.format {
-        { Text = '  ' .. icon .. ' ' }  -- Adding spaces before and after
-    })
-end)
-
+config.use_fancy_tab_bar = true
 
 -- Will only work with use_fancy_tab_bar = true
 -- config.window_frame = {
