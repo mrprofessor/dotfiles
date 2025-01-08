@@ -49,7 +49,7 @@ export PATH="$HOME/bin:$PATH"
 # Aliases
 # alias vim="nvim"
 # alias oldvim="vim"
-alias l="exa -l"
+alias l="eza -l"
 alias k="kubectl $@"
 alias ctags="`brew --prefix`/bin/ctags"
 alias findiot='ls /dev/tty.*'

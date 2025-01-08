@@ -258,11 +258,10 @@ noremap <Right> <Nop>
 
 " Color solarized(dark)
 set termguicolors     " enable true colors support
-colorscheme srcery
 
 " Transparent Vim  
-syntax on
 hi Normal guibg=NONE ctermbg=NONE "Transparent Vim
+syntax on
 
 "===========================================================
 " END COLORS

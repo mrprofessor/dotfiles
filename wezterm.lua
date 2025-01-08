@@ -7,17 +7,35 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -------------------------------------------------------------------------------
--- Overall Style
+-- Overall Appearance
 -------------------------------------------------------------------------------
 
-config.color_scheme = 'Sakura'
+-- Function to switch themes based on system appearance
+function scheme_for_appearance(appearance)
+  if appearance:find 'Dark' then
+    return 'Sakura'
+  else
+    -- return 'Lunaria Light (Gogh)'
+    return 'Sakura (base16)'
+  end
+end
+
+-- Get the appearance from the system
+local function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return 'Dark'
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
 
 -- Font configuration
--- config.font = wezterm.font 'Iosevka'
+-- config.font = wezterm.font 'Iosevka Term'
 config.font = wezterm.font 'Cascadia Code NF'
 config.freetype_load_target = 'Light'
 config.freetype_render_target = 'HorizontalLcd'
-config.font_size = 17.0
+config.font_size = 16.0
 
 -- Remove the title bar from the window
 config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS | RESIZE
@@ -26,7 +44,7 @@ config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS | RESIZE
 native_macos_fullscreen_mode = true
 
 -- Slightly transparent and blurred background
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.75
 config.macos_window_background_blur = 30
 
 -- Don't hide cursor when typing
