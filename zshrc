@@ -88,3 +88,5 @@ fi
 # Miscellaneous configurations
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/go@1.13/bin:$PATH"
+
+[ -f "/Users/mrprofessor/.ghcup/env" ] && . "/Users/mrprofessor/.ghcup/env" # ghcup-env

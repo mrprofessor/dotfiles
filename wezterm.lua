@@ -44,7 +44,7 @@ config.window_decorations = "RESIZE"  -- |INTEGRATED_BUTTONS | RESIZE
 native_macos_fullscreen_mode = true
 
 -- Slightly transparent and blurred background
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.85
 config.macos_window_background_blur = 30
 
 -- Don't hide cursor when typing
