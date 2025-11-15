@@ -171,10 +171,15 @@ run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ["layout floating", "move-node-to-workspace 5"]
+run = ["move-node-to-workspace 5"]
+#run = ["layout floating", "move-node-to-workspace 5"]
 
 [[on-window-detected]]
 if.app-id = 'org.gnu.Emacs'
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
@@ -188,10 +193,6 @@ run = "move-node-to-workspace 4"
 [[on-window-detected]]
 if.app-id = 'com.firmshell.djvureaderfs'
 run = "move-node-to-workspace 4"
-
-[[on-window-detected]]
-if.app-id = 'com.jetbrains.pycharm'
-run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
@@ -213,8 +214,13 @@ run = "move-node-to-workspace 6"
 if.app-id = 'com.microsoft.VSCode'
 run = "move-node-to-workspace 7"
 
+# Music/Multimedia
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
+run = "move-node-to-workspace 7"
+
+[[on-window-detected]]
+if.app-id = 'com.Eltima.ElmediaPlayer'
 run = "move-node-to-workspace 7"
 
 [[on-window-detected]]

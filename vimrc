@@ -72,8 +72,8 @@ nnoremap <leader>s :set invspell<CR>
 "===========================================================
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -113,6 +113,7 @@ Plugin 'chomosuke/typst-preview.nvim'
 " Colors
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'srcery-colors/srcery-vim'
+Plugin 'f-person/auto-dark-mode.nvim'
 
 " Search and file browser
 Plugin 'mileszs/ack.vim'

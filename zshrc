@@ -51,7 +51,6 @@ export PATH="$HOME/bin:$PATH"
 # alias oldvim="vim"
 alias l="eza -l"
 alias k="kubectl $@"
-alias ctags="`brew --prefix`/bin/ctags"
 alias findiot='ls /dev/tty.*'
 
 # Git aliases
@@ -90,3 +89,9 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/go@1.13/bin:$PATH"
 
 [ -f "/Users/mrprofessor/.ghcup/env" ] && . "/Users/mrprofessor/.ghcup/env" # ghcup-env
+. "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mrprofessor/.lmstudio/bin"
+# End of LM Studio CLI section
+

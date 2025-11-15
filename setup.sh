@@ -56,7 +56,10 @@ ln -s -f ~/dotfiles/tmux.conf ~/.tmux.conf
 ############################################################
 # Neovim - An improved/hyped vim??
 ############################################################
-brew install --HEAD neovim
+#brew install neovim
+#git clone https://github.com/LazyVim/starter ~/.config/nvim
+#rm -rf ~/.config/nvim/.git
+brew install neovim
 mkdir -p ~/.config/nvim/
 ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 
